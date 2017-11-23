@@ -1,0 +1,14 @@
+git init
+git add . (pra add tudo)
+git commit -m "first commit"
+
+git push -u origin master
+
+https://help.github.com/articles/setting-your-commit-email-address-in-git/
+
+$ git config user.email "email@example.com"
+
+$ git config user.email
+
+git remote add origin https://github.com/marcosrigueiral/yesodvazio.git
+git remote set-url origin https://github.com/marcosrigueiral/yesodvazio.git

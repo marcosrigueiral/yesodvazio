@@ -1,0 +1,82 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Cadastro de Produto
+            <span class="icon-bar">Cadastro de Categoria
+            <span class="icon-bar">Listagem de Produto
+            <span class="icon-bar">Listagem de Categoria
+        <a class="navbar-brand" href="#">Columbia
+
+    <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="cadastro-produto.html">Cadastro de Produto
+            <li>
+                <a href="#about">Cadastro de Categoria
+            <li>
+                <a href="listagem-produto.html">Listagem de Produto
+            <li>
+                <a href="#contact">Listagem de Categoria
+                
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                <span class="glyphicon glyphicon-list" aria-hidden="true">&nbsp;Listagem de Produto
+
+        <table class="table">
+        <tr>
+            <td>
+                <b>Nome do produto
+            <td>
+                <b>Sexo
+            <td>
+                <b>Categoria
+            <td>
+                <b>Tamanho
+            <td>
+                <b>Preço
+            <td>
+                <b>Descrição
+            <td>
+                <b>&nbsp;
+
+        <tr>  
+            <td>Camiseta Smiley
+            <td>Masculina
+            <td>Camiseta
+            <td>PP
+            <td>39,90
+            <td>lorem ipsum lorem ipsum
+            <td>
+                <button type="button" class="btn btn-sm btn-danger btn-right">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true">
+        
+        <tr>
+            <td>Camiseta Smiley
+            <td>Masculina
+            <td>Camiseta
+            <td>PP
+            <td>39,90
+            <td>lorem ipsum lorem ipsum
+            <td>
+            <button type="button" class="btn btn-sm btn-danger btn-right">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true">
+      
+    <tr>
+      <td>Camiseta Smiley
+      <td>Masculina
+      <td>Camiseta
+      <td>PP
+      <td>39,90
+      <td>lorem ipsum lorem ipsum
+      <td>
+          <button type="button" class="btn btn-sm btn-danger btn-right">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true">
+       
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    <script src="js/bootstrap.min.js">
+  

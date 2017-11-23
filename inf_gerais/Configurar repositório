@@ -1,0 +1,83 @@
+git init :: inicia git
+
+git remote add origin https://github.com/marco-souza9/aulahaskellfatec.git :: conecta com o repositorio, apenas primeira vez
+
+(git status) :: mostra pasta alteradas
+
+https://help.github.com/articles/setting-your-commit-email-address-in-git/
+git config user.email "email@example.com" :: alterar nick do usuario do commit
+
+git add . :: adiciona todo mundo
+
+git commit -m "Arquivo Teste commitado" :: comita na .git as mudanças
+
+git push origin master :: envia pro site
+
+
+//
+
+1) clonar o arquivo dele: git clone https://github.com/romefeller/yesodvazio.git
+
+2) renomear pasta e apagar .git(opcional)
+
+3) Dar stack Build
+
+//
+
+1) Mexer em config\settings.yml e colocar os dados do bd
+
+2) Da Stack Build novamente
+
+//
+
+1) config\models são tabelas do db
+
+O persistent criará a tabela de acordo com a especificação em models.
+
+data Produto = Produto{
+    nome :: Text
+    ,preco :: Double
+    ,estoque ::Int
+    } deriving Show
+	
+Criará também um tipo para o id ProdutoId.
+Criará tipos para cada campo
+produtoNome possuira um tipo auxiliar ProdutoNome
+
+
+Metodos http:
+
+get :: consulta
+post :: inserir
+put :: update
+delete :: remover
+patch :: update uma coluna so
+
+
+psql -h host -U usuario -d database
+senha
+
+psql -h ec2-54-163-229-169.compute-1.amazonaws.com -U nmxoxvysqtpdnr -d dfajbd4tcj69op
+4aaf6ac741f2c7eabd45098e5167b5ea0258efd2a4294914930e94513d99f0e0
+
+\dt :: lista tabelas
+
+
+curl -X POST -v https://haskalpha-romefeller.c9users.io/produto/inserir -d '{"nome":"caneta","preco":5.5,"estoque":500}' :: simula post
+curl -d '{"nome":"caneta","preco":5.5,"estoque":500}' -X POST -v https://haskalpha-romefeller.c9users.io/produto/inserir :: simula post
+curl -X POST -v localhost:8080/produto/inserir -d '{"nome":"caneta","preco":5.5,"estoque":500}' :: simula post
+
+curl -X DELETE -v https://haskalpha-romefeller.c9users.io/produto/apagar/1 :: simula delete
+curl -X DELETE -v localhost:8080/produto/apagar/1 :: simula delete
+
+curl -X GET -v https://haskalpha-romefeller.c9users.io/produto/buscar/1 :: simula get
+curl -X GET -v localhost:8080/produto/buscar/1 :: simula get
+
+curl -X PUT -v https://haskalpha-romefeller.c9users.io/produto/alterar/1 -d '{"nome":"borracha","preco":10.5,"estoque":500}' :: simula put
+curl -X PUT -v localhost:8080/produto/alterar/1 -d '{"nome":"borracha","preco":10.5,"estoque":500}':: simula put
+
+curl -X PATCH -v https://haskalpha-romefeller.c9users.io/produto/alterar/nome/1 -d '{"nome":"giz"}' :: simula patch
+curl -X PATCH -v localhost:8080/produto/alterar/nome/1 -d '{"nome":"giz"}':: simula patch
+
+
+Maquina dele: hasktheta

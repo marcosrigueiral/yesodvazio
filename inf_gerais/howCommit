@@ -1,0 +1,22 @@
+@byDesso
+
+-- para configurar o GIT
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git remote add origin <endereço do repositório>
+    git push -u origin master
+
+
+-- para commitar
+    git config --global user.email fatecrl.anderson@gmail.com
+    git add *
+    git commit -m "commit"
+    git push origin master
+
+-- login e senha
+
+
+-- comando para acessar o banco
+   psql -h host -U user -d database
+-- senha

@@ -1,0 +1,22 @@
+<body class="fundo-login">
+
+    <div class="thumbnail login-area">    
+        <div class="caption">
+            <div class="center">
+                <img src="logo-1.png" class="logo-principal" />
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-user" aria-hidden="true">
+                <input type="text" class="form-control" placeholder="E-mail" aria-describedby="basic-addon1">
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true">
+                <input type="text" class="form-control" placeholder="Senha" aria-describedby="basic-addon1">
+            <br>
+            <p><a href="#" class="btn btn-success" role="button" style="width: 100%">Entrar
+  
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+            <script src="js/bootstrap.min.js">
+  

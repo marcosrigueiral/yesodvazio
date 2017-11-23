@@ -1,0 +1,87 @@
+Usuario json
+    cpfUsuario       Text
+    nomeUsuario      Text
+    emailUsuario     Text
+    senhaUsuario     Text
+    tipoUsuid        TipousuarioId
+    UniquecpfUsuario cpfUsuario
+    deriving Show
+
+Tipousuario json
+    descricaoTipoUsuario Text
+    deriving Show
+
+Cliente json
+    cpfCliente         Text
+    nomeCliente        Text
+    emailCliente       Text
+    UniquecpfCliente   cpfCliente
+    UniqueemailCliente emailCliente
+    deriving Show
+
+Endereco json
+    cliid      ClienteId
+    cep        Text
+    logradouro Text
+    bairro     Text
+    cidade     Text
+    estado     Text
+    deriving Show  
+
+Telefone json
+    cliid  ClienteId
+    numero Text
+    tipo   Int
+    deriving Show
+
+Fornecedor json
+    cnpjFornecedor              Text
+    nomeEmpresafornecedora      Text
+    nomeFornecedor              Text  
+    emailFornecedor             Text  
+    telefonecomercialFornecedor Text  
+    cargoFornecedor             Text  
+    UniquecnpjFornecedor        cnpjFornecedor
+    deriving Show
+
+Produto json
+    nomeProduto         Text
+    descricaoProduto    Text
+    codigoProduto       Text
+    categoriaProdid     CategoriaId
+    custopadraoProduto  Double  
+    precolistaProduto   Double  
+    estoqueProduto      Int     
+    datacadastroProduto Day
+    fornecid            FornecedorId
+    imagemProduto       Text default = 'default.png'
+    deriving Show
+
+Categoria json
+    descricaoCategoria Text
+    deriving Show
+
+Formapagamento json         
+    descricaoFormapagamento Text 
+    deriving Show
+
+Pedido json
+    cliid          ClienteId
+    endid          EnderecoId
+    formapagid     FormapagamentoId
+    dataPedido     Day
+    deriving Show
+
+Detalhespedido json
+    prodid        ProdutoId
+    quantidade    Int
+    precoUnitario Double
+    desconto      Double
+    statid        StatusdetalhespedidoId
+    deriving Show
+
+Statusdetalhespedido json
+    descricaostatusDetalhespedido Text  
+    deriving Show
+    
+
