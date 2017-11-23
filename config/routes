@@ -5,6 +5,6 @@
 
 /                                    HomeR          GET
 
-/default                             DefaultR       GET
+/cadastro                            CadastroR       GET
 /login                               LoginR         GET  POST
 /listagem                            ListagemR      GET

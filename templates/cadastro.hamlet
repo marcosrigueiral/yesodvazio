@@ -19,11 +19,11 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="cadastro-produto.html">Cadastro de Produto
+                        <a href=@{CadastroR}>Cadastro de Produto
                     <li>
                         <a href="#about">Cadastro de Categoria
                     <li>
-                        <a href="listagem-produto.html">Listagem de Produto
+                        <a href=@{ListagemR}>Listagem de Produto
                     <li>
                         <a href="#contact">Listagem de Categoria
                         

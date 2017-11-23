@@ -40,6 +40,8 @@ import Handler.Home
 import Handler.Login
 import Handler.Common
 import Handler.Listagem
+import Handler.Cadastro
+
 
 
 -- This line actually creates our YesodDispatch instance. It is the second half
