@@ -9,15 +9,15 @@ module Handler.Login where
 import Import
 import Database.Persist.Postgresql
 
--- formLogin :: Form (Text, Text)
--- formLogin = renderDivs $ (,)
---     <$> areq emailField "Email: " Nothing
---     <*> areq passwordField "Senha: " Nothing
+formLogin :: Form (Text, Text)
+formLogin = renderDivs $ (,)
+    <$> areq emailField "Email: " Nothing
+    <*> areq passwordField "Senha: " Nothing
 
--- autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Aluno))
--- autenticar email senha = runDB $ selectFirst [AlunoEmail ==. email
---                                              ,AlunoSenha ==. senha] []
-    
+autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Usuario))
+autenticar email senha = runDB $ selectFirst [UsuarioEmail ==. email
+                                             ,UsuarioSenha ==. senha] []
+
 getLoginR :: Handler Html
 getLoginR = do 
     -- (widget,enctype) <- generateFormPost formLogin

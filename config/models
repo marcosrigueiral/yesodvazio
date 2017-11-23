@@ -1,10 +1,10 @@
 Usuario json
-    cpfUsuario       Text
-    nomeUsuario      Text
-    emailUsuario     Text
-    senhaUsuario     Text
-    tipoUsuid        TipousuarioId
-    UniquecpfUsuario cpfUsuario
+    cpf         Text 
+    nome        Text
+    email       Text
+    senha       Text
+    tipoid      TipousuarioId Maybe
+    UniqueCpf   cpf
     deriving Show
 
 Tipousuario json
@@ -12,11 +12,11 @@ Tipousuario json
     deriving Show
 
 Cliente json
-    cpfCliente         Text
-    nomeCliente        Text
-    emailCliente       Text
-    UniquecpfCliente   cpfCliente
-    UniqueemailCliente emailCliente
+    cpf         Text
+    nome        Text
+    email       Text
+    UniqueClienteCpf   cpf
+    Uniqueemail email
     deriving Show
 
 Endereco json
@@ -35,34 +35,34 @@ Telefone json
     deriving Show
 
 Fornecedor json
-    cnpjFornecedor              Text
-    nomeEmpresafornecedora      Text
-    nomeFornecedor              Text  
-    emailFornecedor             Text  
-    telefonecomercialFornecedor Text  
-    cargoFornecedor             Text  
-    UniquecnpjFornecedor        cnpjFornecedor
+    cnpj                 Text
+    nomeEmpresa         Text
+    nome                 Text  
+    email                Text  
+    telefonecomercial    Text  
+    cargo                Text  
+    Uniquecnpj           cnpj
     deriving Show
 
 Produto json
-    nomeProduto         Text
-    descricaoProduto    Text
-    codigoProduto       Text
-    categoriaProdid     CategoriaId
-    custopadraoProduto  Double  
-    precolistaProduto   Double  
-    estoqueProduto      Int     
-    datacadastroProduto Day
+    nome         Text
+    descricao    Text
+    codigo      Text
+    categoriaid     CategoriaId
+    custopadrao  Double  
+    precolista   Double  
+    estoque      Int     
+    datacadastro Day
     fornecid            FornecedorId
-    imagemProduto       Text default = 'default.png'
+    imagem       Text default = 'default.png'
     deriving Show
 
 Categoria json
-    descricaoCategoria Text
+    descricao Text
     deriving Show
 
 Formapagamento json         
-    descricaoFormapagamento Text 
+    descricao Text 
     deriving Show
 
 Pedido json
