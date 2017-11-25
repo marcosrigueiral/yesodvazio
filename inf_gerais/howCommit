@@ -9,9 +9,12 @@
 
 
 -- para commitar
-    git config --global user.email dessomorais@hotmail.com
+
+    
+    git config user.name "Anderson Morais"
+    git config user.email dessomorais@hotmail.com
     git add .
-    git commit -m "commit"
+    git commit -m "Comentar o commit"
     git push origin master
 
 -- login e senha
