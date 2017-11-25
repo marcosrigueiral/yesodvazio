@@ -35,3 +35,6 @@ getHomeR = do
                 $nothing
                     <li> <a href=@{LoginR}> Login
         |]
+
+
+-- Meus commits estão indo pro Marcão (vulgo malaco)
