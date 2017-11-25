@@ -18,7 +18,8 @@ formUsuario = renderDivs $ Usuario
     <*> areq textField     "CPF: "   Nothing
     <*> areq emailField    "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
-    <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing) -- 
+    <*> areq (selectField $ optionsPersistKey [] [] tipousuarioDescricao) "Tipo Usuario: " Nothing
+ -- <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing)
     
 -- pagina principal de acesso para cadastro, listagem, exclusao ou ediçao de Usuarios
 getUsuarioR :: Handler Html

@@ -10,7 +10,7 @@
 
 -- para commitar
     git config --global user.email fatecrl.anderson@gmail.com
-    git add *
+    git add .
     git commit -m "commit"
     git push origin master
 
@@ -20,3 +20,6 @@
 -- comando para acessar o banco
    psql -h host -U user -d database
 -- senha
+
+username: marcosrigueiral
+senha:    githaskell1
