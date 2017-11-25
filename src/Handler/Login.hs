@@ -59,10 +59,16 @@ postLoginR = do
                     setSession "_ID" (usuarioNome usuario)
                     redirect HomeR
         _ -> redirect HomeR
+    
                 
--- desloga da sessao devolvendo pra home
+-- desloga da sessao devolvendo pra home 
 postLogoutR :: Handler Html
 postLogoutR = do 
     deleteSession "_ID"
     redirect HomeR
+ 
+-- postLogoutR :: Handler Html
+-- postLogoutR = do 
+--     lookupLogin >>= deleteSession 
+--     redirect HomeR
     
