@@ -1,10 +1,47 @@
-/static StaticR Static appStatic
+/static                             StaticR               Static appStatic
 
-/favicon.ico FaviconR GET
-/robots.txt RobotsR GET
+/favicon.ico                        FaviconR              GET
+/robots.txt                         RobotsR               GET
 
-/                                    HomeR          GET
+/                                   HomeR                 GET
 
-/cadastro                            CadastroR      GET
-/login                               LoginR         GET  POST
-/listagem                            ListagemR      GET
+/cadastro                           CadastroR             GET
+/login                              LoginR                GET POST
+/logout                             LogoutR               POST
+/listagem                           ListagemR             GET 
+
+/usuario                            UsuarioR              GET 
+/usuario/cadastrar				    CadastrarUsuarioR     GET POST
+/usuario/listar					    ListarUsuarioR	      GET
+/usuario/buscar/#UsuarioId		    BuscarUsuarioR	      GET
+/usuario/editar/#UsuarioId	    	EditarUsuarioR	      PUT
+/usuario/excluir/#UsuarioId	    	ExcluirUsuarioR	      POST
+
+/cliente                            ClienteR              GET
+/cliente/cadastrar                  CadastrarClienteR     GET POST
+/cliente/listar                     ListarClienteR        GET
+/cliente/buscar/#ClienteId          BuscarClienteR        GET
+/cliente/editar/#ClienteId          EditarClienteR        PUT
+/cliente/excluir/#ClienteId         ExcluirClienteR       POST
+
+/fornecedor                         FornecedorR           GET
+/fornecedor/cadastrar               CadastrarFornecedorR  GET POST
+/fornecedor/listar                  ListarFornecedorR     GET
+/fornecedor/buscar/#FornecedorId    BuscarFornecedorR     GET
+/fornecedor/editar/#FornecedorId    EditarFornecedorR     PUT
+/fornecedor/excluir/#FornecedorId   ExcluirFornecedorR    POST
+
+/produto                            ProdutoR              GET
+/produto/cadastrar                  CadastrarProdutoR     GET POST
+/produto/listar                     ListarProdutoR        GET
+/produto/buscar/#ProdutoId          BuscarProdutoR        GET
+/produto/editar/#ProdutoId          EditarProdutoR        PUT
+/produto/exluir/#ProdutoId          ExcluirProdutoR       POST
+
+/pedido                             PedidoR               GET 
+/pedido/cadastrar                   CadastrarPedidoR      GET POST
+/pedido/listar                      ListarPedidoR         GET
+/pedido/buscar/#PedidoId            BuscarPedidoR         GET
+/pedido/editar/#PedidoId            EditarPedidoR         PUT
+/pedido/exluir/#PedidoId            ExcluirPedidoR        POST
+

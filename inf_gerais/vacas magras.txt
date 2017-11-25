@@ -1,0 +1,135 @@
+github
+entra no meu profile
+new repositorio
+
+git init
+git remote add origin https://github.com/marcosrigueiral/yesodvazio.git
+git status
+gitignore -> nao mexer (ele ignora as pastas)
+
+git add . -> adiciona tudo
+git status novamente
+git commit -m "Arquivos do yesod setados para nulo" (-m � o comando para inserir mensagem)
+git push origin master
+git clone https://github.com/romefeller/yesodvazio.git
+renomear pasta e apagar .git (opcional)
+cd GAM (nome da pasta criada)
+stack build
+
+------ CONECTAR AO BANCO DE DADOS --------
+colocar as infos do banco de dados e dar stack build
+ para fazer a tabela: config >> models
+
+
+colocar msgs em cada commit para lembrar o que fez
+
+--- o que tava na tabela models
+Email
+    email Text
+    userId UserId Maybe
+    verkey Text Maybe
+    UniqueEmail email
+Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived.
+    message Text
+    userId UserId Maybe
+    deriving Eq
+    deriving Show
+
+ -- By default this file is used in Model.hs (which is imported by Foundation.hs)
+
+
+--- tabela criada
+Produto
+   
+	nome    Text
+    
+	preco   Double
+    
+	estoque Int
+    
+	deriving Show
+    
+
+-- o que o haskell vai criar
+
+data Produto = Produto {
+		produtoNome :: Text
+		,produtoPreco :: Double
+		,produtoEstoque :: Int
+		} deriving Show
+
+
+criar� tamb�m um tipo para o id ProdutoId
+criar� tamb�m tipos para cada campo
+produtoNome possuir� um tipo auxiliar ProdutoNome
+
+-- se eu mudo o nome do arquivo tenho que importar ele no src >> Application
+
+metodos http:
+get consulta
+post inser�ao
+put update -> quando vai fazer update do registro todo
+patch -> update de uma coluna s�
+
+config >> routes
+regras t�m que ser claras /produto/inserir ProdutoR POST
+
+classe Produto.hs
+postProdutoR :: Handler Html
+
+postProdutoR = undefined
+compila com o stack build
+
+arquivo routes sempre tem que estar aberto
+
+sendStatusJson created201 (object ["resp" .= (fromSqlKey pid)])
+object transforma o que ta em array para JSON
+{"resp" : 1}
+
+package yml  >> coloca http-types
+
+stack exec aulahaskell
+
+psql -h (host do heroku) -U (usuario) -d (database
+
+\dt para ver a tabela
+
+
+delete remo��o
+
+O persistent criar� a tabela de acordo com a especifica��o acima
+
+preview >> running application
+curl -X POST localhost:8080/produto/inserir -d '{"nome": "Caneta", "preco": 5.5, "estoque": 500}'
+"https://haskbeta-romefeller.c9users.io/produto/inserir" 
+
+PARA DELETAR
+tem que criar rota
+/produto/apagar/#ProdutoId  ProdutoDelR DELETE
+curl -X DELETE localhost:8080/produto/apagar/1 (esse ultimo numero � o id do produto)
+"https://haskbeta-romefeller.c9users.io/produto/inserir" 
+
+PARA FAZER UPDATE
+fazer a rota
+curl -X GET  localhost:8080/produto/buscar/2 (id do produto)
+
+curl -X POST PUT localhost:8080/produto/alterar/2 -d '{"nome":"Borracha", "preco":1.5, "estoque": 100}'
+
+no yesod usa =.
+no json usa   .=
+
+
+
+FLUXO
+
+modela >> rota >> cria o arquivo >> programa
+
+/produto/inserir                     ProdutoR       POST
+/produto/apagar/#ProdutoId           ProdutoDelR    DELETE
+/produto/buscar/#ProdutoId           BuscaProdR     GET
+/produto/alterar/#ProdutoId          AlteraProdR    PUT
+/produto/alterar/nome/#ProdutoId     AlteraNomeR    PATCH
+/produto/listar/#Int/menorestoque    MenorEstoqueR  GET
+
+
+15 CO9MMITS POR PESSOA DO GRUPO

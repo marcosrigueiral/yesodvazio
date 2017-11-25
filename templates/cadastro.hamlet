@@ -14,6 +14,7 @@
                 <span class="icon-bar">Cadastro de Categoria
                 <span class="icon-bar">Listagem de Produto
                 <span class="icon-bar">Listagem de Categoria
+                <span class="icon-bar">Login
                 <a class="navbar-brand" href="#">Columbia
                 
             <div id="navbar" class="collapse navbar-collapse">
@@ -26,6 +27,8 @@
                         <a href=@{ListagemR}>Listagem de Produto
                     <li>
                         <a href="#contact">Listagem de Categoria
+                    <li>
+                        <a href=@{LoginR}>Login
                         
         <div class="container">
             <div class="panel panel-primary">
@@ -82,7 +85,7 @@
                         <br>
                         <br>
                         <br>
-                        <button type="button" class="btn btn-success btn-right">
+                        <button type="submit" class="btn btn-success btn-right">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true">&nbsp;Cadastrar
                         
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">

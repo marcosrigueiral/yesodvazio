@@ -1,0 +1,12 @@
+Usuario json
+    cpf       Text 
+    nome      Text
+    email     Text
+    senha     Text
+    UniqueCpf cpf
+    usuarioId TipousuarioId
+    deriving Show
+
+Tipousuario json
+    descricao Text
+    deriving Show

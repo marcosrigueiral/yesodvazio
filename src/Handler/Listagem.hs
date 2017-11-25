@@ -4,6 +4,7 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
+
 module Handler.Listagem where
 
 import Import

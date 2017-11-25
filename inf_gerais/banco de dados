@@ -4,14 +4,18 @@ para acessar o banco de dados, criado no Heroku, basta digitar: psql -h <host> -
                                                 -h ec2-54-83-58-17.compute-1.amazonaws.com
                                                 -U yhkxgojzxidvol
                                                 -d d7tnii3u224fb7
+                                                
+psql -h ec2-54-83-58-17.compute-1.amazonaws.com -U yhkxgojzxidvol -d d7tnii3u224fb7 
 
 Em seguida, informar a senha: 0e04b87ec83d3c0e44663362f3205fb56eceeb7e99a8044e1a25c91531db9b21
 
 
-psql -h ec2-54-83-58-17.compute-1.amazonaws.com -U yhkxgojzxidvol -d d7tnii3u224fb7
-   
-   
-Outros comandos:
+Outros comandos mais usados:
 
-\dt = lista as tabelas
+\dt          : lista as tabelas
+\dS <tabela> : Lista os campos da tabela
+
+
+
+
 

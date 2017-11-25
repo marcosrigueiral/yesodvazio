@@ -1,22 +1,22 @@
 Usuario json
-    cpf         Text 
-    nome        Text
-    email       Text
-    senha       Text
-    tipoid      TipousuarioId Maybe
-    UniqueCpf   cpf
+    cpf       Text 
+    nome      Text
+    email     Text
+    senha     Text
+    usuid     TipousuarioId    
+    UniqueCpf cpf
     deriving Show
 
 Tipousuario json
-    descricaoTipoUsuario Text
+    descricao Text
     deriving Show
 
 Cliente json
-    cpf         Text
-    nome        Text
-    email       Text
-    UniqueClienteCpf   cpf
-    Uniqueemail email
+    cpf              Text
+    nome             Text
+    email            Text
+    UniqueClienteCpf cpf
+    Uniqueemail      email
     deriving Show
 
 Endereco json
@@ -35,25 +35,25 @@ Telefone json
     deriving Show
 
 Fornecedor json
-    cnpj                 Text
-    nomeEmpresa         Text
-    nome                 Text  
-    email                Text  
-    telefonecomercial    Text  
-    cargo                Text  
-    Uniquecnpj           cnpj
+    cnpj              Text
+    nomeEmpresa       Text
+    nome              Text  
+    email             Text  
+    telefonecomercial Text  
+    cargo             Text  
+    Uniquecnpj        cnpj
     deriving Show
 
 Produto json
     nome         Text
     descricao    Text
-    codigo      Text
-    categoriaid     CategoriaId
+    codigo       Text
+    categoriaid  CategoriaId
     custopadrao  Double  
     precolista   Double  
     estoque      Int     
     datacadastro Day
-    fornecid            FornecedorId
+    fornecid     FornecedorId
     imagem       Text default = 'default.png'
     deriving Show
 
@@ -83,5 +83,3 @@ Detalhespedido json
 Statusdetalhespedido json
     descricaostatusDetalhespedido Text  
     deriving Show
-    
-

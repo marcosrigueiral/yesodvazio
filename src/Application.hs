@@ -41,7 +41,11 @@ import Handler.Login
 import Handler.Common
 import Handler.Listagem
 import Handler.Cadastro
-
+import Handler.Usuario 
+import Handler.Cliente
+import Handler.Fornecedor
+import Handler.Pedido
+import Handler.Produto
 
 
 -- This line actually creates our YesodDispatch instance. It is the second half

@@ -15,6 +15,7 @@ import Import
 -- estou chamando além dos estilos master e geral o estilos.cc e o bootstrap
 getHomeR :: Handler Html
 getHomeR = do
+    usuariologado <- lookupSession "_ID"
     defaultLayout $ do 
         -- toWidgetHead $ $(juliusFile "templates/home.julius")
         addStylesheet $ (StaticR css_estilos_css)
@@ -24,16 +25,3 @@ getHomeR = do
         $(whamletFile "templates/cadastro.hamlet")
         -- $(whamletFile "templates/cadastro.hamlet")
         -- $(whamletFile "templates/listagem.hamlet")
-
-getDefaultR :: Handler Html
-getDefaultR = undefined
---defaultLayout $ do
---    setTitle "File Processor"
---    toWidget [hamlet|
---        <h2>Previously submitted files
--- |]
-
-
-
-
-
