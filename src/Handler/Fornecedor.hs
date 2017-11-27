@@ -19,22 +19,22 @@ import Database.Persist.Postgresql
 -- /fornecedor/excluir/#FornecedorId   ExcluirFornecedorR    POST
 
 getFornecedorR :: Handler Html
-getFornecedorR = undefined
+getFornecedorR = error "undefined"
 
 getCadastrarFornecedorR :: Handler Html
-getCadastrarFornecedorR = undefined
+getCadastrarFornecedorR = error "undefined"
 
 postCadastrarFornecedorR :: Handler Html 
-postCadastrarFornecedorR = undefined
+postCadastrarFornecedorR = error "undefined"
 
 getListarFornecedorR :: Handler Html
-getListarFornecedorR = undefined
+getListarFornecedorR = error "undefined"
 
 getBuscarFornecedorR :: FornecedorId -> Handler Html
-getBuscarFornecedorR = undefined
+getBuscarFornecedorR = error "undefined"
 
 putEditarFornecedorR :: FornecedorId -> Handler Html
-putEditarFornecedorR = undefined
+putEditarFornecedorR = error "undefined"
 
 postExcluirFornecedorR :: FornecedorId -> Handler Html
-postExcluirFornecedorR = undefined
+postExcluirFornecedorR = error "undefined"

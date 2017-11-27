@@ -1,1 +1,4 @@
 free icons:    https://br.freepik.com
+
+fuser -v 8080/tcp : para visualizar os processos que estão utilizando a porta 8080.
+

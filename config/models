@@ -1,9 +1,9 @@
 Usuario json
-    cpf       Text 
     nome      Text
+    cpf       Text 
     email     Text
     senha     Text
-    usuid     TipousuarioId    
+    usuid     TipousuarioId
     UniqueCpf cpf
     deriving Show
 
@@ -12,8 +12,8 @@ Tipousuario json
     deriving Show
 
 Cliente json
-    cpf              Text
     nome             Text
+    cpf              Text
     email            Text
     UniqueClienteCpf cpf
     Uniqueemail      email
@@ -60,6 +60,19 @@ Produto json
 Categoria json
     descricao Text
     deriving Show
+
+--------------------------------------------------------------------------
+-- Criar as tabelas: Marca, Venda e talvez Tipo
+-- 
+-- Marca json
+--     descricao
+
+-- Venda json
+--    
+
+-- Tipo json
+--
+-- ---------------------------------------------------------------------
 
 Formapagamento json         
     descricao Text 

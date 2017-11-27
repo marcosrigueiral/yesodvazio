@@ -65,13 +65,13 @@ postCadastrarUsuarioR = do
  
 
 getListarUsuarioR :: Handler Html
-getListarUsuarioR = undefined
+getListarUsuarioR = error "undefined"
 
 putEditarUsuarioR :: UsuarioId -> Handler Html
-putEditarUsuarioR = undefined
+putEditarUsuarioR = error "undefined"
 
 getBuscarUsuarioR :: UsuarioId -> Handler Html
-getBuscarUsuarioR = undefined
+getBuscarUsuarioR = error "undefined"
 
 postExcluirUsuarioR :: UsuarioId -> Handler Html
-postExcluirUsuarioR = undefined
+postExcluirUsuarioR = error "undefined"

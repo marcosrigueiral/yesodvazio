@@ -1,26 +1,24 @@
 @byDesso
 
--- para configurar o GIT
+-- para configurar o GitHub
     git init
     git add README.md
     git commit -m "first commit"
     git remote add origin <endereço do repositório>
     git push -u origin master
 
+-- para commitar no GitHub
 
--- para commitar
-
-    
     git config user.name "Anderson Morais"
     git config user.email dessomorais@hotmail.com
     git add .
-    git commit -m "Comentar o commit"
+    git commit -m "Comentar o commit de forma bem compreensível"
+--  fornecer login e senha do GitHub (login: dessoGitHub)
     git push origin master
+ 
 
--- login e senha
 
 
--- comando para acessar o banco
-   psql -h host -U user -d database
--- senha
+-- comando para acessar o banco: psql -h host -U user -d database
+-- senha 
 

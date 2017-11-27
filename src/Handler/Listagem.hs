@@ -10,11 +10,47 @@ module Handler.Listagem where
 import Import
 import Database.Persist.Postgresql
 
+-- SELECT * FROM SERIE
 getListagemR :: Handler Html
-getListagemR = do
-    defaultLayout $ do
-        addStylesheet $ (StaticR css_estilos_css)
-        addStylesheet $ (StaticR css_estilosMaster_css)
-        addStylesheet $ (StaticR css_estilosGeral_css)
-        addStylesheet $ (StaticR css_bootstrap_css)
-        $(whamletFile "templates/listagem.hamlet")
+getListagemR = error "undefined" -- do 
+--     produtos <- runDB $ selectList [] [Asc ProdutoNome]
+--     defaultLayout $ do 
+--         [whamlet|
+--             <table>
+--                 <thead>
+--                     <tr>
+--                         <th>
+--                             Nome
+                        
+--                         <th> 
+--                             Descricao
+                        
+--                         <th>
+--                             Precolista
+                        
+--                         <th> 
+--                             Estoque
+                        
+--                         <th>
+                            
+                
+--                 <tbody>
+--                     $forall (Entity cliid produto) <- produtos
+--                         <tr>
+--                             <td>
+--                                 <a href=@{PerfilSerieR serieid}> 
+--                                     #{serieNome serie}
+                            
+--                             <td>
+--                                 #{serieGenero serie}
+                            
+--                             <td>
+--                                 #{serieQtTemp serie}
+                            
+--                             <td>
+--                                 #{serieAno serie}
+                            
+--                             <td>
+--                                 <form action=@{ApagarSerieR serieid} method=post>
+--                                     <input type="submit" value="Apagar">
+--         |]

@@ -19,22 +19,22 @@ import Database.Persist.Postgresql
 -- /cliente/excluir/#ClienteId         ExcluirClienteR     POST
 
 getClienteR :: Handler Html
-getClienteR = undefined
+getClienteR = error "undefined"
 
 getCadastrarClienteR :: Handler Html
-getCadastrarClienteR = undefined
+getCadastrarClienteR = error "undefined"
 
 postCadastrarClienteR :: Handler Html
-postCadastrarClienteR = undefined
+postCadastrarClienteR = error "undefined"
 
 getListarClienteR :: Handler Html
-getListarClienteR = undefined
+getListarClienteR = error "undefined"
 
 getBuscarClienteR :: ClienteId -> Handler Html
-getBuscarClienteR = undefined
+getBuscarClienteR = error "undefined"
 
 putEditarClienteR :: ClienteId -> Handler Html
-putEditarClienteR = undefined
+putEditarClienteR = error "undefined"
 
 postExcluirClienteR :: ClienteId -> Handler Html
-postExcluirClienteR = undefined
+postExcluirClienteR = error "undefined"

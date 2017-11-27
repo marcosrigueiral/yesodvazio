@@ -19,22 +19,22 @@ import Database.Persist.Postgresql
 -- /pedido/exluir/#PedidoId            ExcluirPedidoR        POST
 
 getPedidoR :: Handler Html
-getPedidoR = undefined
+getPedidoR = error "undefined"
 
 getCadastrarPedidoR :: Handler Html
-getCadastrarPedidoR = undefined
+getCadastrarPedidoR = error "undefined"
 
 postCadastrarPedidoR :: Handler Html 
-postCadastrarPedidoR = undefined
+postCadastrarPedidoR = error "undefined"
 
 getListarPedidoR :: Handler Html
-getListarPedidoR = undefined
+getListarPedidoR = error "undefined"
 
 getBuscarPedidoR :: PedidoId -> Handler Html
-getBuscarPedidoR = undefined
+getBuscarPedidoR = error "undefined"
 
 putEditarPedidoR :: PedidoId -> Handler Html
-putEditarPedidoR = undefined
+putEditarPedidoR = error "undefined"
 
 postExcluirPedidoR :: PedidoId -> Handler Html
-postExcluirPedidoR = undefined
+postExcluirPedidoR = error "undefined"

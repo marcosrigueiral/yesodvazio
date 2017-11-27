@@ -34,14 +34,14 @@
 /produto                            ProdutoR              GET
 /produto/cadastrar                  CadastrarProdutoR     GET POST
 /produto/listar                     ListarProdutoR        GET
-/produto/buscar/#ProdutoId          BuscarProdutoR        GET
-/produto/editar/#ProdutoId          EditarProdutoR        PUT
-/produto/exluir/#ProdutoId          ExcluirProdutoR       POST
+/produto/#ProdutoId/buscar          BuscarProdutoR        GET
+/produto/#ProdutoId/editar          EditarProdutoR        PUT
+/produto/#ProdutoId/apagar          ApagarProdutoR        POST
+/produto/#ProdutoId/perfil          PerfilProdutoR        GET POST
 
 /pedido                             PedidoR               GET 
 /pedido/cadastrar                   CadastrarPedidoR      GET POST
 /pedido/listar                      ListarPedidoR         GET
 /pedido/buscar/#PedidoId            BuscarPedidoR         GET
 /pedido/editar/#PedidoId            EditarPedidoR         PUT
-/pedido/exluir/#PedidoId            ExcluirPedidoR        POST
-
+/pedido/excluir/#PedidoId           ExcluirPedidoR        POST
