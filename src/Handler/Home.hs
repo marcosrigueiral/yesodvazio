@@ -51,12 +51,12 @@ getHomeR = do
                                 <input type="submit" value="Logout">
                     $nothing
                         <li> <a href=@{LoginR}> Login
-                            
-                $maybe usuario <- logado
-                    <h1> _{MsgBemvindo} - #{usuario}
-                $nothing
-                    <h1> _{MsgBemvindo} _{MsgVisita}
-                <ul>
+                                
+                    $maybe usuario <- logado
+                        <h1> _{MsgBemvindo} - #{usuario}
+                    $nothing
+                        <h1> _{MsgBemvindo} _{MsgVisita}
+                    <ul>
                     
         |]
         

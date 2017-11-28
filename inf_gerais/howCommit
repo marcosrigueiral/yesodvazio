@@ -4,21 +4,17 @@
     git init
     git add README.md
     git commit -m "first commit"
-    git remote add origin <endereço do repositório>
+    git remote add origin "https://github.com/marcosrigueiral/yesodvazio"
     git push -u origin master
 
 -- para commitar no GitHub
-
-    git config user.name "Anderson Morais"
+    git config user.name "Anderson Morais" 
     git config user.email dessomorais@hotmail.com
-    git add .
+*   git add .
     git commit -m "Comentar o commit de forma bem compreensível"
---  fornecer login e senha do GitHub (login: dessoGitHub)
     git push origin master
- 
-
-
-
--- comando para acessar o banco: psql -h host -U user -d database
--- senha 
+--  fornecer login e senha do GitHub (login: dessoGitHub)
+    
+*   caminho completo, por exemplo:
+    git add /home/ubuntu/workspace/GAM/src/Handler/Home.hs
 
