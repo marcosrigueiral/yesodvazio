@@ -13,7 +13,7 @@ import Yesod.Form.Bootstrap3
 
 formLogin :: Form (Text, Text)
 formLogin = renderBootstrap $ (,)
-    <$> areq emailField "Email: " Nothing
+    <$> areq emailField    "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
 
 -- formLogin :: Form (Text, Text)
@@ -51,13 +51,13 @@ getLoginR = do
         |]
         [whamlet|
             $maybe mensa <- msg 
-                <h1> Usuario Invalido
+                <h1> Usuário Inválido !!!
             <form action=@{LoginR} method=post>
                 ^{widget}
                 <input type="submit" value="Login">  
         |]
                 
--- autentifica os dados recebidos pelo form 
+-- autentica os dados recebidos pelo form 
 postLoginR :: Handler Html
 postLoginR = do
     ((res,_),_) <- runFormPost formLogin
@@ -66,7 +66,7 @@ postLoginR = do
             usuario <- autenticar email senha 
             case usuario of 
                 Nothing -> do 
-                    setMessage $ [shamlet| Usuario ou senha invalido |]
+                    setMessage $ [shamlet| Usuário ou senha inválido !!! |]
                     redirect LoginR 
                 Just (Entity usuarioId usuario) -> do 
                     setSession "_ID" (usuarioNome usuario)
@@ -84,4 +84,3 @@ postLogoutR = do
 -- postLogoutR = do 
 --     lookupLogin >>= deleteSession 
 --     redirect HomeR
-    

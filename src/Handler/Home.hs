@@ -59,7 +59,3 @@ getHomeR = do
                     <ul>
                     
         |]
-        
--- teste git
-
-

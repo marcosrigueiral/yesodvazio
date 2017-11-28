@@ -65,7 +65,6 @@ getListagemR = error "undefined" -- do
 
 -- SELECT * FROM USUARIO
 
-
 -- /serie/listar              ListarSerieR     GET
 -- /serie/#SerieId/apagar     ApagarSerieR     POST
 
@@ -92,9 +91,9 @@ getListarUsuarioR = do
                 <thead>
                     <tr>
                         <th>
-                            NOME
-                        <th>
                             CPF
+                        <th>
+                            NOME
                         <th>
                             E-MAIL
                 <tbody>
