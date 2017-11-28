@@ -12,6 +12,7 @@
 
 /usuario                            UsuarioR              GET 
 /usuario/cadastrar				    CadastrarUsuarioR     GET POST
+/usuario/perfil/#UsuarioId          PerfilUsuarioR        GET
 /usuario/listar					    ListarUsuarioR	      GET
 /usuario/buscar/#UsuarioId		    BuscarUsuarioR	      GET
 /usuario/editar/#UsuarioId	    	EditarUsuarioR	      PUT

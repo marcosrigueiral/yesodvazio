@@ -35,8 +35,8 @@ getUsuarioR = do
         [whamlet|
             <h1> Usuarios
             <ul>
-                <li> <a href=@{CadastrarUsuarioR}>  Cadastrar Usuario
-                <li> <a href=@{ListarUsuarioR}>  Listar Usuarios
+                <li> <a href=@{CadastrarUsuarioR}>  Cadastrar Usuários
+                <li> <a href=@{ListarUsuarioR}>  Listar Usuários
                 <li> <a href=@{HomeR}>  Home
         |]
 
@@ -64,14 +64,8 @@ postCadastrarUsuarioR = do
             redirect CadastrarUsuarioR
  
 
-getListarUsuarioR :: Handler Html
-getListarUsuarioR = error "undefined"
-
 putEditarUsuarioR :: UsuarioId -> Handler Html
 putEditarUsuarioR = error "undefined"
 
 getBuscarUsuarioR :: UsuarioId -> Handler Html
 getBuscarUsuarioR = error "undefined"
-
-postExcluirUsuarioR :: UsuarioId -> Handler Html
-postExcluirUsuarioR = error "undefined"

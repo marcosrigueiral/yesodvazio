@@ -9,11 +9,17 @@ module Handler.Login where
 
 import Import
 import Database.Persist.Postgresql
+import Yesod.Form.Bootstrap3
 
 formLogin :: Form (Text, Text)
-formLogin = renderDivs $ (,)
+formLogin = renderBootstrap $ (,)
     <$> areq emailField "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
+
+-- formLogin :: Form (Text, Text)
+-- formLogin = renderBootstrap $ (,)
+--     <$> areq emailField (bootstrapFieldSettings config "Email" Nothing (Just "Person name") Nothing Nothing) Nothing
+--     <*> areq passwordField (bootstrapFieldSettings config "Senha" Nothing (Just "Person name") Nothing Nothing) Nothing
 
 autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Usuario))
 autenticar email senha = runDB $ selectFirst [UsuarioEmail ==. email
@@ -23,7 +29,7 @@ autenticar email senha = runDB $ selectFirst [UsuarioEmail ==. email
 -- getLoginR = do 
 --     -- (widget,enctype) <- generateFormPost formLogin
 --     -- msg <- getMessage
---     defaultLayout $ do 
+--     defaultLayout $ do
 --         addStylesheet $ (StaticR css_estilos_css)
 --         addStylesheet $ (StaticR css_estilosMaster_css)
 --         addStylesheet $ (StaticR css_estilosGeral_css)
@@ -35,7 +41,14 @@ getLoginR :: Handler Html
 getLoginR = do 
     (widget, enctype) <- generateFormPost formLogin
     msg <- getMessage
-    defaultLayout $ do 
+    defaultLayout $ do
+        toWidget [lucius|
+            form
+            {
+                width:300px !important;
+                margin:0 auto !important;
+            }
+        |]
         [whamlet|
             $maybe mensa <- msg 
                 <h1> Usuario Invalido
