@@ -91,9 +91,9 @@ getListarUsuarioR = do
                 <thead>
                     <tr>
                         <th>
-                            CPF
-                        <th>
                             NOME
+                        <th>
+                            CPF
                         <th>
                             E-MAIL
                 <tbody>
