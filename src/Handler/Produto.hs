@@ -18,11 +18,47 @@ import Database.Persist.Postgresql
 -- /produto/editar/#ProdutoId          EditarProdutoR        PUT
 -- /produto/exluir/#ProdutoId          ExcluirProdutoR       POST
 
+-- Produto json
+--     nome         Text
+--     descricao    Text
+--     codigo       Text
+--     categoriaid  CategoriaId
+--   --  custopadrao  Double  
+--     precolista   Double  
+--     estoque      Int     
+--     datacadastro Day
+--     fornecid     FornecedorId
+--  --   imagem       Text default = 'default.png'
+--     deriving Show
+
+-- formulário de cadastro de Usuarios
+formProduto :: Form Produto
+formProduto = renderDivs $ Produto
+    <$> areq textField     "Nome: "         Nothing
+    <*> areq textField     "Descricao: "    Nothing
+    <*> areq textField     "Código: "       Nothing
+    <*> areq (selectField $ optionsPersistKey [] [] categoriaDescricao) "Categoria: " Nothing
+    <*> areq doubleField   "Custo: "        Nothing
+    <*> areq doubleField   "Preço: "        Nothing
+    <*> areq intField      "Estoque: "      Nothing
+    <*> areq dayField      "Data Cadastro: " Nothing
+    <*> areq (selectField $ optionsPersistKey [] [] fornecedorNome) "Fornecedor: " Nothing
+    <*> areq textField      "Imagem: " Nothing
+ -- <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing)
+
 getProdutoR :: Handler Html
 getProdutoR = error "undefined"
 
+-- preenchimento de formulario para cadastro de Produtos utilizando o form criado acima
 getCadastrarProdutoR :: Handler Html
-getCadastrarProdutoR = error "undefined"
+getCadastrarProdutoR = do 
+    (widget,enctype) <- generateFormPost formProduto
+    defaultLayout $ do
+        [whamlet|
+            <form action=@{CadastrarProdutoR} method=post>
+                ^{widget}
+                <input type="submit" value="Cadastrar">
+        |]
 
 postCadastrarProdutoR :: Handler Html 
 postCadastrarProdutoR = error "undefined"

@@ -36,7 +36,9 @@ getUsuarioR = do
             <h1> Usuarios
             <ul>
                 <li> <a href=@{CadastrarUsuarioR}>  Cadastrar Usuários
+                <li> <a href=@{CadastrarProdutoR}>  Cadastrar Produtos
                 <li> <a href=@{ListarUsuarioR}>  Listar Usuários
+                <li> <a href=@{ListarProdutoR}>  Listar Produtos
                 <li> <a href=@{HomeR}>  Home
         |]
 

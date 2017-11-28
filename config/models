@@ -1,6 +1,6 @@
 Usuario json
     nome      Text
-    cpf       Text 
+    cpf       Text     
     email     Text
     senha     Text
     usuid     TipousuarioId
