@@ -47,31 +47,50 @@ getHomeR = do
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">
+                                <a href=@{CadastrarProdutoR}>
                                     Cadastro de Produto
                             <li>
                                 <a href="#">
                                     Cadastro de Categoria
                             <li>
-                                <a href="#">
+                                <a href=@{ListarProdutoR}>
                                     Listagem de Produto
                             <li>
                                 <a href="#">
                                     Listagem de Categoria
-            <header>
-                <li> 
-                    <a href=@{UsuarioR}> Cadastro de Usuario
-                    $maybe usuario <- logado
-                        <li> 
-                            <form action=@{LogoutR} method=post>
-                                <input type="submit" value="Logout">
-                    $nothing
-                        <li> <a href=@{LoginR}> Login
-                                
-                    $maybe usuario <- logado
-                        <h1> _{MsgBemvindo} - #{usuario}
-                    $nothing
-                        <h1> _{MsgBemvindo} _{MsgVisita}
-                    <ul>
+                            <li>
+                                <a href="#">
+                                    Listagem de Categoria
+                            <li> 
+                                <a href=@{UsuarioR}> Cadastro de Usuario
+                                $maybe usuario <- logado
+                                    <li> 
+                                        <form action=@{LogoutR} method=post>
+                                            <input type="submit" value="Logout">
+                                            
+                                $nothing
+                                   <li> <a href=@{LoginR}> Login
+                                                
+                                $maybe usuario <- logado
+                                    <h1> _{MsgBemvindo} #{usuario}
+                                $nothing
+                                    <h1> _{MsgBemvindo} _{MsgVisita}
+            
                     
         |]
+
+-- <header>
+--                 <li> 
+--                     <a href=@{UsuarioR}> Cadastro de Usuario
+--                     $maybe usuario <- logado
+--                         <li> 
+--                             <form action=@{LogoutR} method=post>
+--                                 <input type="submit" value="Logout">
+--                     $nothing
+--                         <li> <a href=@{LoginR}> Login
+                                
+--                     $maybe usuario <- logado
+--                         <h1> _{MsgBemvindo} #{usuario}
+--                     $nothing
+--                         <h1> _{MsgBemvindo} _{MsgVisita}
+--                     <ul>

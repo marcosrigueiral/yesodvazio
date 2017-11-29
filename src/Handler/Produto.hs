@@ -43,7 +43,7 @@ formProduto = renderDivs $ Produto
     <*> areq intField      "Estoque: "      Nothing
     <*> areq dayField      "Data Cadastro: " Nothing
     <*> areq (selectField $ optionsPersistKey [] [] fornecedorNome) "Fornecedor: " Nothing
-    <*> areq textField      "Imagem: " Nothing
+    <*> areq textField     "Imagem: "       Nothing
  -- <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing)
 
 getProdutoR :: Handler Html
