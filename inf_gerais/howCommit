@@ -18,3 +18,10 @@
 *   caminho completo, por exemplo:
     git add /home/ubuntu/workspace/GAM/src/Handler/Home.hs
 
+-- para commitar no GitHub (Marcos)
+    git config user.name "Marcos Rigueiral"
+    git config user.email marcos.rigueiral@hotmail.com
+*   git add .
+    git commit -m "Comentar o commit de forma bem compreensível"
+    git push origin master
+--  fornecer login e senha do GitHub (login: dessoGitHub)

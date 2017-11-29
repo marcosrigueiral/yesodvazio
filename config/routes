@@ -46,3 +46,10 @@
 /pedido/buscar/#PedidoId            BuscarPedidoR         GET
 /pedido/editar/#PedidoId            EditarPedidoR         PUT
 /pedido/excluir/#PedidoId           ExcluirPedidoR        POST
+
+/categoria                          CategoriaR           GET
+/categoria/cadastrar                CadastrarCategoriaR  GET POST
+/categoria/listar                   ListarCategoriaR     GET
+/categoria/perfil/#CategoriaId      PerfilCategoriaR        GET
+/categoria/excluir/#CategoriaId     ExcluirCategoriaR    POST
+

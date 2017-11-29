@@ -50,16 +50,13 @@ getHomeR = do
                                 <a href=@{CadastrarProdutoR}>
                                     Cadastro de Produto
                             <li>
-                                <a href="#">
+                                <a href=@{CadastrarCategoriaR}>
                                     Cadastro de Categoria
                             <li>
                                 <a href=@{ListarProdutoR}>
                                     Listagem de Produto
                             <li>
-                                <a href="#">
-                                    Listagem de Categoria
-                            <li>
-                                <a href="#">
+                                <a href=@{ListarCategoriaR}>
                                     Listagem de Categoria
                             <li> 
                                 <a href=@{UsuarioR}> Cadastro de Usuario
