@@ -13,8 +13,16 @@ import Yesod.Form.Bootstrap3
 
 formLogin :: Form (Text, Text)
 formLogin = renderBootstrap $ (,)
-    <$> areq emailField    "Email: " Nothing
-    <*> areq passwordField "Senha: " Nothing
+    <$> areq emailField FieldSettings{fsId=Just "txtEmail",
+                                      fsLabel=" ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("placeholder","E-mail"), ("class","form-control")]} Nothing
+    <*> areq passwordField FieldSettings{fsId=Just "txtSenha",
+                                      fsLabel=" ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("placeholder","Senha"), ("class","form-control")]} Nothing
 
 -- formLogin :: Form (Text, Text)
 -- formLogin = renderBootstrap $ (,)
@@ -42,19 +50,50 @@ getLoginR = do
     (widget, enctype) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_css)    
         toWidget [lucius|
-            form
+            body
             {
-                width:300px !important;
-                margin:0 auto !important;
+                background-color: #222222;
+            }
+            .login-area
+            {
+                max-width: 330px !important;
+                margin: 0 auto !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%,-50%) !important;
+            }
+            
+            .btn-login
+            {
+                width:100%;
+            }
+            
+            .center
+            {
+                text-align: center;
+            }
+            
+            .logo-principal 
+            {
+                display: inline-block;
+                max-width: 90%;
+                margin-top: 20px;
             }
         |]
         [whamlet|
             $maybe mensa <- msg 
                 <h1> Usuário Inválido !!!
-            <form action=@{LoginR} method=post>
-                ^{widget}
-                <input type="submit" value="Login">  
+            <div class="thumbnail login-area">   
+                <div class="caption">   
+                    <div class="center">   
+                        <img src="../../static/img/logo-1.png" class="logo-principal">
+                    <form action=@{LoginR} method=post>
+                        ^{widget}
+                        <br>
+                        <input type="submit" value="Entrar" class="btn btn-success btn-login">  
         |]
                 
 -- autentica os dados recebidos pelo form 
