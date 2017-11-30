@@ -41,6 +41,26 @@ formFornecedor = renderDivs $ Fornecedor
 -- <*> areq (selectField $ optionsPersistKey [] [] tipousuarioDescricao) "Tipo Usuario: " Nothing
 -- <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing)
 
+getPerfilFornecedorR :: FornecedorId -> Handler Html
+getPerfilFornecedorR fornecedorid = do 
+    fornecedor <- runDB $ get404 fornecedorid
+    defaultLayout $ do 
+        [whamlet|
+            <h1> ]
+                Empresa: #{fornecedorNomeEmpresa fornecedor}
+            <h2>
+                CNPJ: #{fornecedorCnpj fornecedor} 
+            <h2>
+                Nome: #{fornecedorNome fornecedor}
+            <h2>
+                E-mail: #{fornecedorEmail fornecedor}
+            <h2>
+                Tel. Comercial: #{fornecedorEmail fornecedor}
+            <h2>
+                Cargo: #{fornecedorCargo fornecedor}
+            <a href=@{HomeR}> Voltar
+        |]
+
 getFornecedorR :: Handler Html
 getFornecedorR = do
     defaultLayout $ do
@@ -59,10 +79,11 @@ getFornecedorR = do
                 <li> <a href=@{HomeR}>  Home
         |]
 
--- essa função pega um formulário (FormFornecedor) e gera um Handler com uma tupla de Widget (campos do form)e um ency
+-- essa função pega um formulário (FormFornecedor) e gera um Handler 
+-- com uma tupla de "Widget" para campos do formulario e um "enctype" para String.
 getCadastrarFornecedorR :: Handler Html
 getCadastrarFornecedorR = do
-        (widget,enctype) <- generateFormPost formFornecedor
+    (widget,enctype) <- generateFormPost formFornecedor
     defaultLayout $ do
         [whamlet|
             <form action=@{CadastrarFornecedorR} method=post>
@@ -83,34 +104,43 @@ postCadastrarFornecedorR = do
 
 getListarFornecedorR :: Handler Html
 getListarFornecedorR = do
-    usuarios <- runDB $ selectList [] [Asc FornecedorNome]
+    fornecedores <- runDB $ selectList [] [Asc FornecedorNomeEmpresa]
     defaultLayout $ do
         [whamlet| 
             <table>
                 <thead>
                     <tr>
                         <th>
-                            NOME
+                            Nome da Empresa
                         <th>
-                            CPF
+                            CNPJ
                         <th>
-                            E-MAIL
+                            Representante
+                        <th>
+                            Cargo
+                        <th>
+                            E-mail
+                        <th>
+                            Telefone Comercial
                 <tbody>
-                    $forall (Entity usuarioid usuario) <- usuarios
+                    $forall (Entity fornecedorid fornecedor) <- fornecedores
                         <tr>
                             <td>
-                                <a href=@{PerfilUsuarioR usuarioid}> 
-                                    #{usuarioNome usuario}
-                            
+                                <a href=@{PerfilFornecedorR fornecedorid}> 
+                                    #{fornecedorNomeEmpresa fornecedor}
                             <td>
-                                #{usuarioCpf usuario}
-                            
+                                #{fornecedorCnpj fornecedor}
                             <td>
-                                #{usuarioEmail usuario}
-                            
+                                #{fornecedorNome fornecedor}
                             <td>
-                                <form action=@{ExcluirUsuarioR usuarioid} method=post>
-                                    <input type="submit" value="Excluir">
+                                #{fornecedorCargo fornecedor}
+                            <td>
+                                #{fornecedorEmail fornecedor}
+                            <td>
+                                #{fornecedorTelefonecomercial fornecedor}
+                            <td>
+                                <form action=@{ExcluirFornecedorR fornecedorid} method=post>
+                                    <input type="submit" value="Excluir Fornecedor">
         |]
 
 getBuscarFornecedorR :: FornecedorId -> Handler Html
