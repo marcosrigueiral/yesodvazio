@@ -27,6 +27,7 @@
 
 /fornecedor                         FornecedorR           GET
 /fornecedor/cadastrar               CadastrarFornecedorR  GET POST
+/fornecedor/perfil/#FornecedorId    PerfilFornecedorR     GET
 /fornecedor/listar                  ListarFornecedorR     GET
 /fornecedor/buscar/#FornecedorId    BuscarFornecedorR     GET
 /fornecedor/editar/#FornecedorId    EditarFornecedorR     PUT

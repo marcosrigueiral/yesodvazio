@@ -54,7 +54,6 @@ Produto json
     estoque      Int     
     datacadastro Day
     fornecid     FornecedorId
-    imagem       Text default = 'default.png'
     deriving Show
 
 Categoria json

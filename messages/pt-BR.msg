@@ -1,2 +1,2 @@
-Bemvindo: Bem vindo, 
+Bemvindo: Bem vindo(a), 
 Visita: Visitante

@@ -24,33 +24,80 @@ mkMessage "App" "messages" "pt-BR"
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
 type Form a = Html -> MForm Handler (FormResult a, Widget)
--- type Form a = FormInput Handler a 
+-- type Form a = FormInput Handler a StaticR             
+
+-- LoginR              
+-- LogoutR             
+-- ListagemR           
+-- UsuarioR            
+-- CadastrarUsuarioR   
+-- PerfilUsuarioR      
+-- ListarUsuarioR	    
+-- BuscarUsuarioR	    
+-- EditarUsuarioR	    
+-- ExcluirUsuarioR	    
+-- ClienteR            
+-- CadastrarClienteR   
+-- ListarClienteR      
+-- BuscarClienteR      
+-- EditarClienteR      
+-- ExcluirClienteR     
+-- FornecedorR         
+-- CadastrarFornecedorR
+-- PerfilFornecedorR   
+-- ListarFornecedorR   
+-- BuscarFornecedorR   
+-- EditarFornecedorR   
+-- ExcluirFornecedorR  
+-- ProdutoR            
+-- CadastrarProdutoR   
+-- ListarProdutoR      
+-- BuscarProdutoR      
+-- EditarProdutoR      
+-- ApagarProdutoR      
+-- PerfilProdutoR      
+-- PedidoR             
+-- CadastrarPedidoR    
+-- ListarPedidoR       
+-- BuscarPedidoR       
+-- EditarPedidoR       
+-- ExcluirPedidoR      
+-- CategoriaR          
+-- CadastrarCategoriaR 
+-- ListarCategoriaR    
+-- PerfilCategoriaR    
+-- ExcluirCategoriaR   
+
+-- isAuthorized EditarPedidoR _ = ehUsuario
 
 instance Yesod App where
     makeLogger = return . appLogger
     authRoute _ = Just $ HomeR
-    -- isAuthorized HomeR _ = return Authorized
-    -- isAuthorized LoginR _ = return Authorized
-    -- isAuthorized AlunoR _ = return Authorized
-    -- isAuthorized LogoutR _ = return Authorized
-    -- isAuthorized AdminR _ = ehAdmin
-    -- isAuthorized _ _ = ehUsuario
+    isAuthorized (StaticR _) _ = return Authorized
+    isAuthorized HomeR _ = return Authorized
+    isAuthorized LoginR _ = return Authorized
+    isAuthorized LogoutR _ = return Authorized
+    isAuthorized CadastroR _ = return Authorized
+    isAuthorized CadastrarUsuarioR _ = ehAdmin
+    isAuthorized CadastrarCategoriaR _ = ehAdmin
+    isAuthorized CadastrarFornecedorR _ = ehAdmin
+    isAuthorized _ _ = ehUsuario
 
--- ehAdmin :: Handler AuthResult
--- ehAdmin = do
---     sessao <- lookupSession "_ID"
---     case sessao of 
---         Nothing -> return AuthenticationRequired
---         (Just "admin") -> return Authorized
---         (Just _ ) -> return $ Unauthorized "VC NAO EH O PAH!"
+ehAdmin :: Handler AuthResult
+ehAdmin = do
+    sessao <- lookupSession "_ID"
+    case sessao of 
+        Nothing -> return AuthenticationRequired
+        (Just "admin") -> return Authorized
+        (Just _ ) -> return $ Unauthorized "Você não tem permissão!!!"
     
--- ehUsuario :: Handler AuthResult
--- ehUsuario = do
---     sessao <- lookupSession "_ID"
---     case sessao of 
---         Nothing -> return AuthenticationRequired
---         (Just "admin") -> return $ Unauthorized "ADMIN N FAZ COISA NORMAL" 
---         (Just _) -> return Authorized
+ehUsuario :: Handler AuthResult
+ehUsuario = do
+    sessao <- lookupSession "_ID"
+    case sessao of 
+        Nothing -> return AuthenticationRequired
+    -- (Just "admin") -> return $ Unauthorized "ADMIN N FAZ COISA NORMAL" 
+        (Just _) -> return Authorized
 
 
 instance YesodPersist App where

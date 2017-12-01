@@ -44,6 +44,8 @@ getHomeR = do
                                 Listagem de Produtos
                             <span class="icon-bar">
                                 Listagem de Categorias
+                            <span class="icon-bar">
+                                Listagem de Fornecedores
                         <a class="navbar-brand" href="#">
                             <img src="../../static/img/logo-2.png" class="logo-menu" />
                     <div id="navbar" class="collapse navbar-collapse">
@@ -62,11 +64,14 @@ getHomeR = do
                                     Listagem de Produtos
                             <li>
                                 <a href=@{ListarCategoriaR}>
-                                    Listagem de Categoria
+                                    Listagem de Categorias
+                            <li>
+                                <a href=@{ListarFornecedorR}>
+                                    Listagem de Fornecedores
                             <li> 
                                 <a href=@{UsuarioR}> Cadastro de Usuarios
                                 $maybe usuario <- logado
-                                    <li> 
+                                    <li>
                                         <form action=@{LogoutR} method=post>
                                             <input type="submit" value="Logout">
                                             
