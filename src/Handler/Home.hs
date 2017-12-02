@@ -76,9 +76,19 @@ getHomeR = do
                                                 Cadastro de Fornecedores
                                         <li>
                                             <a href=@{ListarFornecedorR}>
-                                                Listagem de Fornecedores                                            
-                                <li> 
-                                    <a href=@{UsuarioR}> Cadastro de Usuarios
+                                                Listagem de Fornecedores  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Usuários
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarUsuarioR}>
+                                                Cadastro de Usuários
+                                        <li>
+                                            <a href=@{ListarUsuarioR}>
+                                                Listagem de Usuários  
                                 <li>
                                     <form action=@{LogoutR} method=post>
                                         <input type="submit" value="Logout">
