@@ -89,6 +89,7 @@ postCadastrarProdutoR = do
 
 getListarProdutoR :: Handler Html
 getListarProdutoR = do 
+    -- logado <- lookupSession "_ID"
     produtos <- runDB $ selectList [] [Asc ProdutoNome]
     defaultLayout $ do 
         addStylesheet $ (StaticR css_bootstrap_css)
@@ -104,7 +105,11 @@ getListarProdutoR = do
                 width: 140px;
                 margin-top: -10px;
             }
-
+            .btn-sair 
+            {
+                float: right;
+                margin-top: 8px;
+            }
         |]       
         [whamlet|
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,13 +161,12 @@ getListarProdutoR = do
                                             Listagem de Fornecedores                                            
                             <li> 
                                 <a href=@{UsuarioR}> Cadastro de Usuarios
-                                $maybe usuario <- logado
                                     <li>
                                         <form action=@{LogoutR} method=post>
-                                            <input type="submit" value="Logout">
+                                            <button type="submit" value="" class="btn btn-danger btn-sair">
+                                                Sair
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true">                        
                                             
-                                $nothing
-                                   <li> <a href=@{LoginR}> Login
                                                 
             <div class="container">   
                 <div class="panel panel-default">

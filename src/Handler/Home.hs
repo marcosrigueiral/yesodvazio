@@ -74,7 +74,7 @@ getHomeR = do
                                         <a href=@{CadastrarFornecedorR}>
                                             Cadastro de Fornecedores
                                     <li>
-                                        <a href=@{ListarCategoriaR}>
+                                        <a href=@{ListarFornecedorR}>
                                             Listagem de Fornecedores                                            
                             <li> 
                                 <a href=@{UsuarioR}> Cadastro de Usuarios
