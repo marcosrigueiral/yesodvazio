@@ -39,8 +39,6 @@ import System.Log.FastLogger                (defaultBufSize, newStdoutLoggerSet,
 import Handler.Home
 import Handler.Login
 import Handler.Common
-import Handler.Listagem
-import Handler.Cadastro
 import Handler.Usuario 
 import Handler.Cliente
 import Handler.Fornecedor

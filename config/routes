@@ -5,10 +5,8 @@
 
 /                                   HomeR                 GET
 
-/cadastro                           CadastroR             GET
 /login                              LoginR                GET POST
 /logout                             LogoutR               POST
-/listagem                           ListagemR             GET 
 
 /usuario                            UsuarioR              GET 
 /usuario/cadastrar				    CadastrarUsuarioR     GET POST

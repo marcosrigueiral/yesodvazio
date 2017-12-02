@@ -25,3 +25,11 @@
     git commit -m "Comentar o commit de forma bem compreensível"
     git push origin master
 --  fornecer login e senha do GitHub (login: marcosrigueiral)
+
+-- para commitar no GitHub (Gabs)
+    git config user.name "Gabriel Fonseca"
+    git config user.email gabrielfonseca.coutinho@outlook.com
+*   git add .
+    git commit -m "Comentar o commit de forma bem compreensível"
+    git push origin master
+--  fornecer login e senha do GitHub (login: supersonicgabs)

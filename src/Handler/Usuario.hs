@@ -71,3 +71,55 @@ putEditarUsuarioR = error "undefined"
 
 getBuscarUsuarioR :: UsuarioId -> Handler Html
 getBuscarUsuarioR = error "undefined"
+
+getPerfilUsuarioR :: UsuarioId -> Handler Html
+getPerfilUsuarioR usuarioid = do 
+    usuario <- runDB $ get404 usuarioid
+    defaultLayout $ do 
+        [whamlet|
+            <h1> ]
+                Nome: #{usuarioNome usuario}
+            <h2>
+                CPF: #{usuarioCpf usuario} 
+            <h2>
+                E-mail: #{usuarioEmail usuario}
+            <a href=@{HomeR}> Voltar
+        |]
+
+getListarUsuarioR :: Handler Html
+getListarUsuarioR = do 
+    usuarios <- runDB $ selectList [] [Asc UsuarioNome]
+    defaultLayout $ do
+        [whamlet| 
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            NOME
+                        <th>
+                            CPF
+                        <th>
+                            E-MAIL
+                <tbody>
+                    $forall (Entity usuarioid usuario) <- usuarios
+                        <tr>
+                            <td>
+                                <a href=@{PerfilUsuarioR usuarioid}> 
+                                    #{usuarioNome usuario}
+                            
+                            <td>
+                                #{usuarioCpf usuario}
+                            
+                            <td>
+                                #{usuarioEmail usuario}
+                            
+                            <td>
+                                <form action=@{ExcluirUsuarioR usuarioid} method=post>
+                                    <input type="submit" value="Excluir">
+        |]
+
+postExcluirUsuarioR :: UsuarioId -> Handler Html
+postExcluirUsuarioR usuarioid = do 
+    _ <- runDB $ get404 usuarioid
+    runDB $ delete usuarioid
+    redirect ListarUsuarioR
