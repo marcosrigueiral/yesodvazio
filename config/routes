@@ -16,6 +16,7 @@
 /usuario/editar/#UsuarioId	    	EditarUsuarioR	      PUT
 /usuario/excluir/#UsuarioId	    	ExcluirUsuarioR	      POST
 
+
 /cliente                            ClienteR              GET
 /cliente/cadastrar                  CadastrarClienteR     GET POST
 /cliente/listar                     ListarClienteR        GET

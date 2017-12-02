@@ -112,7 +112,6 @@ getListarUsuarioR = do
                             
                             <td>
                                 #{usuarioEmail usuario}
-                            
                             <td>
                                 <form action=@{ExcluirUsuarioR usuarioid} method=post>
                                     <input type="submit" value="Excluir">

@@ -29,7 +29,7 @@ type Form a = Html -> MForm Handler (FormResult a, Widget)
 
 instance Yesod App where
     makeLogger = return . appLogger
-    authRoute _ = Just $ HomeR
+    authRoute _ = Just $ LoginR
     isAuthorized (StaticR _) _ = return Authorized
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
@@ -43,7 +43,7 @@ instance Yesod App where
 ehAdmin :: Handler AuthResult
 ehAdmin = do
     sessao <- lookupSession "_ID"
-    case sessao of 
+    case sessao of
         Nothing -> return AuthenticationRequired
         (Just "admin") -> return Authorized
         (Just _ ) -> return $ Unauthorized "Você não tem permissão!!!"
@@ -70,13 +70,13 @@ instance HasHttpManager App where
     getHttpManager = appHttpManager
 
 -- verifica o tipo de usuario logado
-lookupLogin :: Handler Text
-lookupLogin = do
-    logu <- lookupSession "_Usuario"
-    case logu of
-        (Just _) -> return "_Usuario"
-        Nothing -> do 
-            logadm <- lookupSession "_Adm"
-            case logadm of
-                (Just _) -> return "_Adm"
-                Nothing -> return "_Visitante"
+-- lookupLogin :: Handler Text
+-- lookupLogin = do
+--     logu <- lookupSession "_Usuario"
+--     case logu of
+--         (Just _) -> return "_Usuario"
+--         Nothing -> do 
+--             logadm <- lookupSession "admin"
+--             case logadm of
+--                 (Just _) -> return "_Adm"
+--                 Nothing -> return "_Visitante"

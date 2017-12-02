@@ -106,7 +106,7 @@ getLoginR = do
 postLoginR :: Handler Html
 postLoginR = do
     ((res,_),_) <- runFormPost formLogin
-    case res of 
+    case res of
         FormSuccess (email,senha) -> do 
             usuario <- autenticar email senha 
             case usuario of 
@@ -143,7 +143,7 @@ postLogoutR :: Handler Html
 postLogoutR = do 
     deleteSession "_ID"
     redirect HomeR
- 
+
 -- postLogoutR :: Handler Html
 -- postLogoutR = do 
 --     lookupLogin >>= deleteSession 
