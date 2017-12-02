@@ -26,49 +26,6 @@ mkYesodData "App" $(parseRoutesFile "config/routes")
 type Form a = Html -> MForm Handler (FormResult a, Widget)
 -- type Form a = FormInput Handler a StaticR             
 
--- LoginR              
--- LogoutR             
--- ListagemR           
--- UsuarioR            
--- CadastrarUsuarioR   
--- PerfilUsuarioR      
--- ListarUsuarioR	    
--- BuscarUsuarioR	    
--- EditarUsuarioR	    
--- ExcluirUsuarioR	    
--- ClienteR            
--- CadastrarClienteR   
--- ListarClienteR      
--- BuscarClienteR      
--- EditarClienteR      
--- ExcluirClienteR     
--- FornecedorR         
--- CadastrarFornecedorR
--- PerfilFornecedorR   
--- ListarFornecedorR   
--- BuscarFornecedorR   
--- EditarFornecedorR   
--- ExcluirFornecedorR  
--- ProdutoR            
--- CadastrarProdutoR   
--- ListarProdutoR      
--- BuscarProdutoR      
--- EditarProdutoR      
--- ApagarProdutoR      
--- PerfilProdutoR      
--- PedidoR             
--- CadastrarPedidoR    
--- ListarPedidoR       
--- BuscarPedidoR       
--- EditarPedidoR       
--- ExcluirPedidoR      
--- CategoriaR          
--- CadastrarCategoriaR 
--- ListarCategoriaR    
--- PerfilCategoriaR    
--- ExcluirCategoriaR   
-
--- isAuthorized EditarPedidoR _ = ehUsuario
 
 instance Yesod App where
     makeLogger = return . appLogger
@@ -78,6 +35,7 @@ instance Yesod App where
     isAuthorized LoginR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
     isAuthorized CadastroR _ = return Authorized
+    isAuthorized DefaultR _ = return Authorized
     isAuthorized CadastrarUsuarioR _ = ehAdmin
     isAuthorized CadastrarCategoriaR _ = ehAdmin
     isAuthorized CadastrarFornecedorR _ = ehAdmin
@@ -111,3 +69,15 @@ instance RenderMessage App FormMessage where
 
 instance HasHttpManager App where
     getHttpManager = appHttpManager
+
+-- verifica o tipo de usuario logado
+lookupLogin :: Handler Text
+lookupLogin = do
+    logu <- lookupSession "_Usuario"
+    case logu of
+        (Just _) -> return "_Usuario"
+        Nothing -> do 
+            logadm <- lookupSession "_Adm"
+            case logadm of
+                (Just _) -> return "_Adm"
+                Nothing -> return "_Visitante"

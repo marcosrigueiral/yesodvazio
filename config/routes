@@ -54,3 +54,5 @@
 /categoria/perfil/#CategoriaId      PerfilCategoriaR        GET
 /categoria/excluir/#CategoriaId     ExcluirCategoriaR    POST
 
+/default                            DefaultR             GET
+

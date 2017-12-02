@@ -32,6 +32,12 @@ formLogin = renderBootstrap $ (,)
 autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Usuario))
 autenticar email senha = runDB $ selectFirst [UsuarioEmail ==. email
                                              ,UsuarioSenha ==. senha] []
+                                             
+                                            
+-- funcao de autentificaçao de funcionario
+-- autenticarFunc :: Text -> Text -> HandlerT App IO (Maybe (Entity Funcionario))
+-- autenticarFunc email senha = runDB $ selectFirst [UsuarioEmailf ==. email
+--                                              ,UsuarioSenhaf ==. senha] []
 
 -- getLoginR :: Handler Html
 -- getLoginR = do 
@@ -112,6 +118,25 @@ postLoginR = do
                     redirect HomeR
         _ -> redirect HomeR
     
+    
+-- autentifica os dados recebidos pelo form 
+-- postLoginR :: Handler Html
+-- postLoginR = do
+--     ((res,_),_) <- runFormPost formLogin -- recebe a resposta do form
+--     case res of 
+--         FormSuccess ("root@root.com","root") -> do 
+--             setSession "_Adm" "admin"
+--             redirect HomeR
+--         FormSuccess (email,senha) -> do 
+--             func <- autenticarFunc email senha -- pega a resposta do form, executa o autenticar
+--             case func of 
+--                 Just (Entity funcid func) -> do -- se a autentificaçao for sucesso
+--                     setSession "_Usuario" (funcionarioNm_funcionario func)
+--                     redirect HomeR
+--                 Nothing -> do
+--                     setMessage $ [shamlet| Usuario ou senha invalido |] -- se a autentificaçao falhar
+--                     redirect LoginR
+--         _ -> redirect HomeR
                 
 -- desloga da sessao devolvendo pra home 
 postLogoutR :: Handler Html

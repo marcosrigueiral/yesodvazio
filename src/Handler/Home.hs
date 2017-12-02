@@ -35,39 +35,46 @@ getHomeR = do
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                             <span class="sr-only">
-                                Cadastro de Produtos
                             <span class="icon-bar">
-                                Cadastro de Categorias
                             <span class="icon-bar">
-                                Cadastro de Fornecedores
                             <span class="icon-bar">
-                                Listagem de Produtos
-                            <span class="icon-bar">
-                                Listagem de Categorias
-                            <span class="icon-bar">
-                                Listagem de Fornecedores
                         <a class="navbar-brand" href="#">
                             <img src="../../static/img/logo-2.png" class="logo-menu" />
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li>
-                                <a href=@{CadastrarProdutoR}>
-                                    Cadastro de Produtos
-                            <li>
-                                <a href=@{CadastrarCategoriaR}>
-                                    Cadastro de Categorias
-                            <li>
-                                <a href=@{CadastrarFornecedorR}>
-                                    Cadastro de Fornecedores
-                            <li>
-                                <a href=@{ListarProdutoR}>
-                                    Listagem de Produtos
-                            <li>
-                                <a href=@{ListarCategoriaR}>
-                                    Listagem de Categorias
-                            <li>
-                                <a href=@{ListarFornecedorR}>
-                                    Listagem de Fornecedores
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Produtos
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarProdutoR}>
+                                            Cadastro de Produtos
+                                    <li>
+                                        <a href=@{ListarProdutoR}>
+                                            Listagem de Produtos
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Categorias
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarCategoriaR}>
+                                            Cadastro de Categorias
+                                    <li>
+                                        <a href=@{ListarCategoriaR}>
+                                            Listagem de Categorias 
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Fornecedores
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarFornecedorR}>
+                                            Cadastro de Fornecedores
+                                    <li>
+                                        <a href=@{ListarCategoriaR}>
+                                            Listagem de Fornecedores                                            
                             <li> 
                                 <a href=@{UsuarioR}> Cadastro de Usuarios
                                 $maybe usuario <- logado
@@ -78,24 +85,9 @@ getHomeR = do
                                 $nothing
                                    <li> <a href=@{LoginR}> Login
                                                 
-                                $maybe usuario <- logado
-                                    <h1> _{MsgBemvindo} #{usuario}
-                                $nothing
-                                    <h1> _{MsgBemvindo} _{MsgVisita}
+            <div class="container">             
+                $maybe usuario <- logado
+                    <h1> _{MsgBemvindo} #{usuario}
+                $nothing
+                    <h1> _{MsgBemvindo} _{MsgVisita}            
         |]
-
--- <header>
---                 <li> 
---                     <a href=@{UsuarioR}> Cadastro de Usuarios
---                     $maybe usuario <- logado
---                         <li> 
---                             <form action=@{LogoutR} method=post>
---                                 <input type="submit" value="Logout">
---                     $nothing
---                         <li> <a href=@{LoginR}> Login
-                                
---                     $maybe usuario <- logado
---                         <h1> _{MsgBemvindo} #{usuario}
---                     $nothing
---                         <h1> _{MsgBemvindo} _{MsgVisita}
---                     <ul>

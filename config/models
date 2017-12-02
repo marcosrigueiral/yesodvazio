@@ -26,7 +26,15 @@ Endereco json
     bairro     Text
     cidade     Text
     estado     Text
-    deriving Show  
+    deriving Show
+    
+-- Cidade json
+--     descricao  Text
+--     deriving Show
+
+--  Estado json
+--     descricao  Text
+--     deriving Show
 
 Telefone json
     cliid  ClienteId
@@ -36,6 +44,7 @@ Telefone json
 
 Fornecedor json
     cnpj              Text
+--    ie                Text
     nomeEmpresa       Text
     nome              Text  
     email             Text  
@@ -47,7 +56,7 @@ Fornecedor json
 Produto json
     nome         Text
     descricao    Text
-    codigo       Text
+    codigo       Text   
     categoriaid  CategoriaId
     custopadrao  Double  
     precolista   Double  
@@ -59,19 +68,6 @@ Produto json
 Categoria json
     descricao Text
     deriving Show
-
---------------------------------------------------------------------------
--- Criar as tabelas: Marca, Venda e talvez Tipo
--- 
--- Marca json
---     descricao
-
--- Venda json
---    
-
--- Tipo json
---
--- ---------------------------------------------------------------------
 
 Formapagamento json         
     descricao Text 

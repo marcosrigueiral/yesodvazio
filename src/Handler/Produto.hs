@@ -46,7 +46,23 @@ formProduto = renderDivs $ Produto
  -- <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing)
 
 getProdutoR :: Handler Html
-getProdutoR = error "undefined"
+getProdutoR = do
+    defaultLayout $ do
+        toWidget [lucius|
+            li {
+                display: inline-block;
+                list-style:  none;
+            }
+            
+        |]
+        [whamlet|
+            <h1> Produtos
+            <ul>
+                <li> <a href=@{CadastrarProdutoR}>  Cadastrar Produtos
+                <li> <a href=@{ListarProdutoR}>  Listar Produtos
+                <li> <a href=@{ListarProdutoR}>  Listar Produtos
+                <li> <a href=@{HomeR}>  Home
+        |]
 
 -- preenchimento de formulario para cadastro de Produtos utilizando o form criado acima
 getCadastrarProdutoR :: Handler Html
@@ -60,7 +76,16 @@ getCadastrarProdutoR = do
         |]
 
 postCadastrarProdutoR :: Handler Html 
-postCadastrarProdutoR = error "undefined"
+postCadastrarProdutoR = do
+    ((res,_),_) <- runFormPost formProduto
+    case res of 
+        FormSuccess func -> do
+            _ <- runDB $ insert func
+            redirect ProdutoR
+        _ -> do
+            setMessage $ [shamlet| Falha no Cadastro |]
+            redirect CadastrarProdutoR
+ 
 
 getListarProdutoR :: Handler Html
 getListarProdutoR = do 
@@ -73,7 +98,7 @@ getListarProdutoR = do
                         <td> 
                             Nome
                         <td>
-                            Precolista
+                            Preco lista
                         <td>
                             Estoque
                         <td>
