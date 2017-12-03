@@ -31,12 +31,36 @@ import Database.Persist.Postgresql
 -- formulário de Cadastro de Fornecedores
 formFornecedor :: Form Fornecedor
 formFornecedor = renderDivs $ Fornecedor
-    <$> areq textField     "CNPJ: "                 Nothing
-    <*> areq textField     "Nome da Empresa: "      Nothing
-    <*> areq textField     "Nome do Fornecedor: "   Nothing
-    <*> areq emailField    "Email: "                Nothing
-    <*> areq textField     "Telefone Comercial: "   Nothing
-    <*> areq textField     "Cargo: "                Nothing
+    <$> areq textField FieldSettings{fsId=Just "txtCNPJ",
+                                      fsLabel="CNPJ: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq textField FieldSettings{fsId=Just "txtNomeEmpresa",
+                                      fsLabel="Nome da Empresa: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq textField FieldSettings{fsId=Just "txtNomeFornecedor",
+                                      fsLabel="Nome do Fornecedor: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq emailField FieldSettings{fsId=Just "txtEmail",
+                                      fsLabel="E-mail: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq textField FieldSettings{fsId=Just "txtTelComercial",
+                                      fsLabel="Telefone Comercial: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq textField FieldSettings{fsId=Just "txtCargo",
+                                      fsLabel="Cargo: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
     
 -- <*> areq (selectField $ optionsPersistKey [] [] tipousuarioDescricao) "Tipo Usuario: " Nothing
 -- <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing)
@@ -85,10 +109,109 @@ getCadastrarFornecedorR :: Handler Html
 getCadastrarFornecedorR = do
     (widget,enctype) <- generateFormPost formFornecedor
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_css)
+        --addStylesheet $ (StaticR css_temas_css)
+        addScript $ (StaticR js_jquery_min_js)
+        addScript $ (StaticR js_bootstrap_min_js)
+        --corpo html
+        -- $(whamletFile "templates/home.hamlet")
+        toWidget [lucius|
+            .logo-menu 
+            {
+                float: left;
+                width: 140px;
+                margin-top: -10px;
+            }
+            .btn-sair 
+            {
+                float: right;
+                margin-top: 8px;
+            }
+            .required
+            {
+                width: 200px;
+                float: left;
+                padding: 10px;
+            }
+            .btn-area
+            {
+                width: 100%;
+                float: left;
+            }
+            .btn-enviar
+            {
+                float: right;
+            }
+        |]     
         [whamlet|
-            <form action=@{CadastrarFornecedorR} method=post>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <nav class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">
+                                Toggle navigation
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                        <a class="navbar-brand" href="#">
+                            <img src="../../static/img/logo-2.png" class="logo-menu" />
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Produtos
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarProdutoR}>
+                                            Cadastro de Produtos
+                                    <li>
+                                        <a href=@{ListarProdutoR}>
+                                            Listagem de Produtos
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Categorias
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarCategoriaR}>
+                                            Cadastro de Categorias
+                                    <li>
+                                        <a href=@{ListarCategoriaR}>
+                                            Listagem de Categorias 
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Fornecedores
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarFornecedorR}>
+                                            Cadastro de Fornecedores
+                                    <li>
+                                        <a href=@{ListarCategoriaR}>
+                                            Listagem de Fornecedores                                            
+                            <li> 
+                                <a href=@{UsuarioR}> Cadastro de Usuarios
+                                    <li>
+                                        <form action=@{LogoutR} method=post>
+                                            <button type="submit" value="" class="btn btn-danger btn-sair">
+                                                Sair
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true">                        
+                                            
+                                                
+            <div class="container">   
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
+                        Cadastro de Produtos        
+                    <div class="panel-body">
+                        <form action=@{CadastrarFornecedorR} method=post>
+                            ^{widget}
+                            <div class="btn-area">
+                                <button type="submit" value="" class="btn btn-success btn-enviar">
+                                    Cadastrar
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">                        
         |]
     
 postCadastrarFornecedorR :: Handler Html 
