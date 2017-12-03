@@ -3,7 +3,7 @@ Usuario json
     cpf       Text     
     email     Text
     senha     Text
-    usuid     TipousuarioId
+--  usuid     TipousuarioId
     UniqueCpf cpf
     deriving Show
 

@@ -91,9 +91,7 @@ getHomeR = do
                                                 Listagem de Usuários  
                                 <li>
                                     <form action=@{LogoutR} method=post>
-                                        <button type="submit" value="" class="btn btn-danger btn-sair">
-                                            Sair
-                                            <span class="glyphicon glyphicon-remove" aria-hidden="true">                        
+                                        <input type="submit" value="Logout">
                                         
             $nothing
                 <meta name="viewport" content="width=device-width, initial-scale=1">

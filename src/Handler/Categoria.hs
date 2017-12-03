@@ -79,6 +79,10 @@ getListarCategoriaR = do
                 float: right;
                 margin-top: 8px;
             }
+            .btn-excluir 
+            {
+                float: right;
+            }            
         |]        
         [whamlet| 
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,7 +160,9 @@ getListarCategoriaR = do
                                     
                                     <td>
                                         <form action=@{ExcluirCategoriaR categoriaid} method=post>
-                                            <input type="submit" value="Excluir">
+                                            <button type="submit" value="" class="btn btn-danger btn-excluir">
+                                                Excluir Categoria
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true">                                                                    
         |]
         
 getPerfilCategoriaR :: CategoriaId -> Handler Html

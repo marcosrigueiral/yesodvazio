@@ -196,7 +196,9 @@ getListarProdutoR = do
                                         #{produtoEstoque produto}
                                     <td>
                                         <form action=@{ApagarProdutoR pid} method=post>
-                                            <input type="submit" value="Apagar">
+                                            <button type="submit" value="">
+                                                Excluir Produto
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true">                                                                    
                         
                         
         |]

@@ -29,7 +29,7 @@ type Form a = Html -> MForm Handler (FormResult a, Widget)
 
 instance Yesod App where
     makeLogger = return . appLogger
-    authRoute _ = Just $ HomeR
+    authRoute _ = Just $ LoginR
     isAuthorized (StaticR _) _ = return Authorized
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
