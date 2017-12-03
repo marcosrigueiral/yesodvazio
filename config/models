@@ -28,6 +28,10 @@ Endereco json
     estado     Text
     deriving Show
     
+Marca
+    descricao   Text    
+    deriving Show
+    
 -- Cidade json
 --     descricao  Text
 --     deriving Show

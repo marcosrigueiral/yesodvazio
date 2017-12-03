@@ -20,6 +20,7 @@
 /cliente                            ClienteR              GET
 /cliente/cadastrar                  CadastrarClienteR     GET POST
 /cliente/listar                     ListarClienteR        GET
+/cliente/perfil/#ClienteId          PerfilClienteR        GET
 /cliente/buscar/#ClienteId          BuscarClienteR        GET
 /cliente/editar/#ClienteId          EditarClienteR        PUT
 /cliente/excluir/#ClienteId         ExcluirClienteR       POST

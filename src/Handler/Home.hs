@@ -26,7 +26,11 @@ getHomeR = do
                 width: 140px;
                 margin-top: -10px;
             }
-
+            .btn-sair 
+            {
+                float: right;
+                margin-top: 8px;
+            }
         |]    
         [whamlet|
             $maybe usuario <- logado
@@ -40,7 +44,7 @@ getHomeR = do
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                                 <span class="icon-bar">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href=@{HomeR}>
                                 <img src="../../static/img/logo-2.png" class="logo-menu" />
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
@@ -80,15 +84,28 @@ getHomeR = do
                                                 
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        Usuários
+                                        Funcionários
                                         <span class="caret">
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a href=@{CadastrarUsuarioR}>
-                                                Cadastro de Usuários
+                                                Cadastro de Funcionários
                                         <li>
                                             <a href=@{ListarUsuarioR}>
-                                                Listagem de Usuários  
+                                                Listagem de Funcionários  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Clientes
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarClienteR}>
+                                                Cadastro de Clientes
+                                        <li>
+                                            <a href=@{ListarClienteR}>
+                                                Listagem de Clientes  
+                                
                                 <li>
                                     <form action=@{LogoutR} method=post>
                                         <button type="submit" value="" class="btn btn-danger btn-sair">
@@ -112,9 +129,9 @@ getHomeR = do
                             <ul class="nav navbar-nav">
                                 <li> <a href=@{LoginR}> Login
                                                             
-                        <div class="container">             
-                            $maybe usuario <- logado
-                                <h1> _{MsgBemvindo} #{usuario}
-                            $nothing
-                                <h1> _{MsgBemvindo} _{MsgVisita}            
+                <div class="container">             
+                    $maybe usuario <- logado
+                        <h1> _{MsgBemvindo} #{usuario}
+                    $nothing
+                        <h1> _{MsgBemvindo} _{MsgVisita}            
         |]
