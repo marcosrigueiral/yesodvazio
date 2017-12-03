@@ -34,15 +34,51 @@ import Database.Persist.Postgresql
 -- formulário de cadastro de Usuarios
 formProduto :: Form Produto
 formProduto = renderDivs $ Produto
-    <$> areq textField     "Nome: "         Nothing
-    <*> areq textField     "Descricao: "    Nothing
-    <*> areq textField     "Código: "       Nothing
-    <*> areq (selectField $ optionsPersistKey [] [] categoriaDescricao) "Categoria: " Nothing
-    <*> areq doubleField   "Custo: "        Nothing
-    <*> areq doubleField   "Preço: "        Nothing
-    <*> areq intField      "Estoque: "      Nothing
-    <*> areq dayField      "Data Cadastro: " Nothing
-    <*> areq (selectField $ optionsPersistKey [] [] fornecedorNome) "Fornecedor: " Nothing
+    <$> areq textField FieldSettings{fsId=Just "txtNome",
+                                      fsLabel="Nome: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq textField FieldSettings{fsId=Just "txtDescricao",
+                                      fsLabel="Descrição: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq textField FieldSettings{fsId=Just "txtCodigo",
+                                      fsLabel="Código: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq (selectField $ optionsPersistKey [] [] categoriaDescricao) FieldSettings{fsId=Just "txtCategoria",
+                                      fsLabel="Categoria: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq doubleField FieldSettings{fsId=Just "txtCusto",
+                                      fsLabel="Custo: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq doubleField FieldSettings{fsId=Just "txtPreco",
+                                      fsLabel="Preço: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq intField FieldSettings{fsId=Just "txtEstoque",
+                                      fsLabel="Estoque: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq dayField FieldSettings{fsId=Just "txtDataCadastro",
+                                      fsLabel="Data Cadastro: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq (selectField $ optionsPersistKey [] [] fornecedorNome) FieldSettings{fsId=Just "txtFornecedor",
+                                      fsLabel="Fornecedor: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
  -- <*> (fmap toSqlKey $ areq intField "Tipo Usuario" Nothing)
 
 getProdutoR :: Handler Html
@@ -86,6 +122,21 @@ getCadastrarProdutoR = do
             {
                 float: right;
                 margin-top: 8px;
+            }
+            .required
+            {
+                width: 200px;
+                float: left;
+                padding: 10px;
+            }
+            .btn-area
+            {
+                width: 100%;
+                float: left;
+            }
+            .btn-enviar
+            {
+                float: right;
             }
         |]        
         [whamlet|
@@ -148,12 +199,15 @@ getCadastrarProdutoR = do
             <div class="container">   
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">
-                        Listagem de Produtos        
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
+                        Cadastro de Produtos        
                     <div class="panel-body">
                         <form action=@{CadastrarProdutoR} method=post>
                             ^{widget}
-                            <input type="submit" value="Cadastrar">
+                            <div class="btn-area">
+                                <button type="submit" value="" class="btn btn-success btn-enviar">
+                                    Cadastrar
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">                        
         |]
 
 postCadastrarProdutoR :: Handler Html 
@@ -191,6 +245,10 @@ getListarProdutoR = do
                 float: right;
                 margin-top: 8px;
             }
+            .btn-excluir 
+            {
+                float: right;
+            }             
         |]       
         [whamlet|
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -277,7 +335,7 @@ getListarProdutoR = do
                                         #{produtoEstoque produto}
                                     <td>
                                         <form action=@{ApagarProdutoR pid} method=post>
-                                            <button type="submit" value="">
+                                            <button type="submit" value="" class="btn btn-danger btn-excluir">
                                                 Excluir Produto
                                                 <span class="glyphicon glyphicon-remove" aria-hidden="true">                                                                    
                         
