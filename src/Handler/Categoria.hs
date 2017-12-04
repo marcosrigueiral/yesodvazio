@@ -14,7 +14,11 @@ import Database.Persist.Postgresql
 -- formulário de cadastro de Categorias
 formCategoria :: Form Categoria
 formCategoria = renderDivs $ Categoria
-    <$> areq textField     "Descrição: "  Nothing
+    <$> areq textField FieldSettings{fsId=Just "txtDescricao",
+                                      fsLabel="Descrição: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
     
 -- pagina principal de acesso para cadastro, listagem, exclusao ou ediçao de Usuarios
 getCategoriaR :: Handler Html
@@ -39,10 +43,131 @@ getCadastrarCategoriaR :: Handler Html
 getCadastrarCategoriaR = do 
     (widget,enctype) <- generateFormPost formCategoria
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_css)
+        --addStylesheet $ (StaticR css_temas_css)
+        addScript $ (StaticR js_jquery_min_js)
+        addScript $ (StaticR js_bootstrap_min_js)
+        --corpo html
+        -- $(whamletFile "templates/home.hamlet")
+        toWidget [lucius|
+            .logo-menu 
+            {
+                float: left;
+                width: 140px;
+                margin-top: -10px;
+            }
+            .btn-sair 
+            {
+                float: right;
+                margin-top: 8px;
+            }
+            .required
+            {
+                width: 200px;
+                float: left;
+                padding: 10px;
+            }
+            .btn-area
+            {
+                width: 100%;
+                float: left;
+            }
+            .btn-enviar
+            {
+                float: right;
+            }
+        |]     
         [whamlet|
-            <form action=@{CadastrarCategoriaR} method=post>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <nav class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">
+                                Toggle navigation
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                        <a class="navbar-brand" href="#">
+                            <img src="../../static/img/logo-2.png" class="logo-menu" />
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Produtos
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarProdutoR}>
+                                            Cadastro de Produtos
+                                    <li>
+                                        <a href=@{ListarProdutoR}>
+                                            Listagem de Produtos
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Categorias
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarCategoriaR}>
+                                            Cadastro de Categorias
+                                    <li>
+                                        <a href=@{ListarCategoriaR}>
+                                            Listagem de Categorias 
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Fornecedores
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href=@{CadastrarFornecedorR}>
+                                            Cadastro de Fornecedores
+                                    <li>
+                                        <a href=@{ListarCategoriaR}>
+                                            Listagem de Fornecedores                                            
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Funcionários
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarUsuarioR}>
+                                                Cadastro de Funcionários
+                                        <li>
+                                            <a href=@{ListarUsuarioR}>
+                                                Listagem de Funcionários  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Clientes
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarClienteR}>
+                                                Cadastro de Clientes
+                                        <li>
+                                            <a href=@{ListarClienteR}>
+                                                Listagem de Clientes  
+                                                
+                                <li>
+                                    <form action=@{LogoutR} method=post>
+                                        <button type="submit" value="" class="btn btn-danger btn-sair">
+                                            Sair
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true">                        
+                                            
+                                                
+            <div class="container">   
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
+                        Cadastro de Categorias        
+                    <div class="panel-body">        
+                        <form action=@{CadastrarCategoriaR} method=post>
+                            ^{widget}
+                            <div class="btn-area">                            
+                                <button type="submit" value="" class="btn btn-success btn-enviar">
+                                    Cadastrar
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">                        
         |]
 
 -- inclusao do formulario preenchido no banco
@@ -132,13 +257,22 @@ getListarCategoriaR = do
                                     <li>
                                         <a href=@{ListarCategoriaR}>
                                             Listagem de Fornecedores                                            
-                            <li> 
-                                <a href=@{UsuarioR}> Cadastro de Usuarios
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Funcionários
+                                    <span class="caret">
+                                <ul class="dropdown-menu">
                                     <li>
-                                        <form action=@{LogoutR} method=post>
-                                            <button type="submit" value="" class="btn btn-danger btn-sair">
-                                                Sair
-                                                <span class="glyphicon glyphicon-remove" aria-hidden="true">                        
+                                        <a href=@{CadastrarUsuarioR}>
+                                            Cadastro de Funcionários
+                                    <li>
+                                        <a href=@{ListarUsuarioR}>
+                                            Listagem de Funcionários  
+                            <li>
+                                <form action=@{LogoutR} method=post>
+                                    <button type="submit" value="" class="btn btn-danger btn-sair">
+                                        Sair
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true">                        
                                             
                                                 
             <div class="container">   
