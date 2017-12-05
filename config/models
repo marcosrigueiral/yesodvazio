@@ -89,8 +89,10 @@ Formapagamento json
 Pedido json
     cliid          ClienteId
     endid          EnderecoId
+    proid          ProdutoId     
     formapagid     FormapagamentoId
     dataPedido     Day
+    quant          Int   -- item novo
     deriving Show
 
 Detalhespedido json
