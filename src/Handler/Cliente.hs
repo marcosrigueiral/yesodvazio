@@ -14,9 +14,21 @@ import Database.Persist.Postgresql
 -- formulário de cadastro de Clientes
 formCliente :: Form Cliente
 formCliente = renderDivs $ Cliente
-    <$> areq textField     "Nome: "  Nothing
-    <*> areq textField     "CPF: "   Nothing
-    <*> areq emailField    "Email: " Nothing
+    <$> areq textField  FieldSettings{fsId=Just "txtNome",
+                                      fsLabel="Nome: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq textField  FieldSettings{fsId=Just "txtCPF",
+                                      fsLabel="CPF: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
+    <*> areq emailField   FieldSettings{fsId=Just "txtEmail",
+                                      fsLabel="E-mail: ",
+                                      fsTooltip= Nothing,
+                                      fsName= Nothing,
+                                      fsAttrs=[("class","form-control")]} Nothing
  -- <*> areq (selectField $ optionsPersistKey [] [] tipoClienteDescricao) "Tipo Cliente: " Nothing
  -- <*> (fmap toSqlKey $ areq intField "Tipo Cliente" Nothing)
     
@@ -45,10 +57,132 @@ getCadastrarClienteR :: Handler Html
 getCadastrarClienteR = do 
     (widget,enctype) <- generateFormPost formCliente
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_css)
+        --addStylesheet $ (StaticR css_temas_css)
+        addScript $ (StaticR js_jquery_min_js)
+        addScript $ (StaticR js_bootstrap_min_js)
+        --corpo html
+        -- $(whamletFile "templates/home.hamlet")
+        toWidget [lucius|
+            .logo-menu 
+            {
+                float: left;
+                width: 140px;
+                margin-top: -10px;
+            }
+            .btn-sair 
+            {
+                float: right;
+                margin-top: 8px;
+            }
+            .required
+            {
+                width: 200px;
+                float: left;
+                padding: 10px;
+            }
+            .btn-area
+            {
+                width: 100%;
+                float: left;
+            }
+            .btn-enviar
+            {
+                float: right;
+            }
+        |]     
         [whamlet|
-            <form action=@{CadastrarClienteR} method=post>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <nav class="navbar navbar-inverse">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">
+                                    Toggle navigation
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{HomeR}>
+                                <img src="../../static/img/logo-2.png" class="logo-menu" />
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Produtos
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarProdutoR}>
+                                                Cadastro de Produtos
+                                        <li>
+                                            <a href=@{ListarProdutoR}>
+                                                Listagem de Produtos
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Categorias
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarCategoriaR}>
+                                                Cadastro de Categorias
+                                        <li>
+                                            <a href=@{ListarCategoriaR}>
+                                                Listagem de Categorias 
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Fornecedores
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarFornecedorR}>
+                                                Cadastro de Fornecedores
+                                        <li>
+                                            <a href=@{ListarFornecedorR}>
+                                                Listagem de Fornecedores  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Funcionários
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarUsuarioR}>
+                                                Cadastro de Funcionários
+                                        <li>
+                                            <a href=@{ListarUsuarioR}>
+                                                Listagem de Funcionários  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Clientes
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarClienteR}>
+                                                Cadastro de Clientes
+                                        <li>
+                                            <a href=@{ListarClienteR}>
+                                                Listagem de Clientes  
+                                
+                                <li>
+                                    <form action=@{LogoutR} method=post>
+                                        <button type="submit" value="" class="btn btn-danger btn-sair">
+                                            Sair
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true">                             
+                                            
+                                                
+            <div class="container">   
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
+                        Cadastro de Clientes        
+                    <div class="panel-body">                
+                        <form action=@{CadastrarClienteR} method=post>
+                            ^{widget}
+                            <div class="btn-area">                            
+                                <button type="submit" value="" class="btn btn-success btn-enviar">
+                                    Cadastrar
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true">                            
         |]
 
 -- inclusao do formulario preenchido no banco
@@ -88,31 +222,155 @@ getListarClienteR :: Handler Html
 getListarClienteR = do 
     clientes <- runDB $ selectList [] [Asc ClienteNome]
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_css)
+        --addStylesheet $ (StaticR css_temas_css)
+        addScript $ (StaticR js_jquery_min_js)
+        addScript $ (StaticR js_bootstrap_min_js)
+        --corpo html
+        -- $(whamletFile "templates/home.hamlet")
+        toWidget [lucius|
+            .logo-menu 
+            {
+                float: left;
+                width: 140px;
+                margin-top: -10px;
+            }
+            .btn-sair 
+            {
+                float: right;
+                margin-top: 8px;
+            }
+            .required
+            {
+                width: 200px;
+                float: left;
+                padding: 10px;
+            }
+            .btn-area
+            {
+                width: 100%;
+                float: left;
+            }
+            .btn-excluir 
+            {
+                float: right;
+            }              
+            .btn-enviar
+            {
+                float: right;
+            }
+        |]       
         [whamlet| 
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            NOME
-                        <th>
-                            CPF
-                        <th>
-                            E-MAIL
-                <tbody>
-                    $forall (Entity clienteid cliente) <- clientes
-                        <tr>
-                            <td>
-                                <a href=@{PerfilClienteR clienteid}> 
-                                    #{clienteNome cliente}
-                            
-                            <td>
-                                #{clienteCpf cliente}
-                            
-                            <td>
-                                #{clienteEmail cliente}
-                            <td>
-                                <form action=@{ExcluirClienteR clienteid} method=post>
-                                    <input type="submit" value="Excluir">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <nav class="navbar navbar-inverse">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">
+                                    Toggle navigation
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{HomeR}>
+                                <img src="../../static/img/logo-2.png" class="logo-menu" />
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Produtos
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarProdutoR}>
+                                                Cadastro de Produtos
+                                        <li>
+                                            <a href=@{ListarProdutoR}>
+                                                Listagem de Produtos
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Categorias
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarCategoriaR}>
+                                                Cadastro de Categorias
+                                        <li>
+                                            <a href=@{ListarCategoriaR}>
+                                                Listagem de Categorias 
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Fornecedores
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarFornecedorR}>
+                                                Cadastro de Fornecedores
+                                        <li>
+                                            <a href=@{ListarFornecedorR}>
+                                                Listagem de Fornecedores  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Funcionários
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarUsuarioR}>
+                                                Cadastro de Funcionários
+                                        <li>
+                                            <a href=@{ListarUsuarioR}>
+                                                Listagem de Funcionários  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Clientes
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarClienteR}>
+                                                Cadastro de Clientes
+                                        <li>
+                                            <a href=@{ListarClienteR}>
+                                                Listagem de Clientes  
+                                
+                                <li>
+                                    <form action=@{LogoutR} method=post>
+                                        <button type="submit" value="" class="btn btn-danger btn-sair">
+                                            Sair
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true">                       
+                                            
+                                                
+            <div class="container">   
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">
+                        Listagem de Clientes 
+                    <table class="table">        
+                        <thead>
+                            <tr>
+                                <th>
+                                    NOME
+                                <th>
+                                    CPF
+                                <th>
+                                    E-MAIL
+                        <tbody>
+                            $forall (Entity clienteid cliente) <- clientes
+                                <tr>
+                                    <td>
+                                        <a href=@{PerfilClienteR clienteid}> 
+                                            #{clienteNome cliente}
+                                    
+                                    <td>
+                                        #{clienteCpf cliente}
+                                    
+                                    <td>
+                                        #{clienteEmail cliente}
+                                    <td>
+                                        <form action=@{ExcluirClienteR clienteid} method=post>
+                                            <button type="submit" value="" class="btn btn-danger btn-excluir">
+                                                Excluir Categoria
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true">  
         |]
 
 postExcluirClienteR :: ClienteId -> Handler Html
