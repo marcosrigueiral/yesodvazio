@@ -34,6 +34,10 @@ getHomeR = do
                 float: right;
                 margin-top: 8px;
             }
+            .imgfundo{
+                width:100%;
+                background: url(../../static/img/img-fundo.jpg) no-repeat;
+            }
         |]    
         [whamlet|
             $maybe usuario <- logado
@@ -117,20 +121,24 @@ getHomeR = do
                                         
             $nothing
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                <nav class="navbar navbar-inverse">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">
-                                    Toggle navigation
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                            <a class="navbar-brand" href="#">
-                                <img src="../../static/img/logo-2.png" class="logo-menu" />
-                        <div id="navbar" class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li> <a href=@{LoginR}> Login
+                    <nav class="navbar navbar-inverse">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">
+                                        Toggle navigation
+                                    <span class="icon-bar">
+                                    <span class="icon-bar">
+                                    <span class="icon-bar">
+                                <a class="navbar-brand" href="#">
+                                    <img src="../../static/img/logo-2.png" class="logo-menu" />
+                            <div id="navbar" class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li> <a href=@{LoginR}> Login
+                                    
+                        <div class="imgfundo">
+                            <img src="../../static/img/img-fundo.jpg" />
+                        
                                                             
                 <div class="container">             
                     $maybe usuario <- logado
