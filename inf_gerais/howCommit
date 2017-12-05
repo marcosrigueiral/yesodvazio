@@ -19,6 +19,9 @@
 *   caminho completo, por exemplo:
     git add /home/ubuntu/workspace/GAM/src/Handler/Home.hs
 
+*   em tudo, por exemplo:
+    git add .
+
 -- para commitar no GitHub (Marcos)
     git config user.name "Marcos Rigueiral"
     git config user.email marcos.rigueiral@hotmail.com

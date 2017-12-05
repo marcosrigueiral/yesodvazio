@@ -52,9 +52,7 @@ getFuncionarioR = do
             <h1> Funcionarios
             <ul>
                 <li> <a href=@{CadastrarFuncionarioR}>  Cadastrar Funcionarios
-                <li> <a href=@{CadastrarProdutoR}>  Cadastrar Produtos
                 <li> <a href=@{ListarFuncionarioR}>  Listar Funcionarios
-                <li> <a href=@{ListarProdutoR}>  Listar Produtos
                 <li> <a href=@{HomeR}>  Home
         |]
 
