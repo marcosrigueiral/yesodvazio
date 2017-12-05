@@ -1,20 +1,20 @@
-/static                             StaticR               Static appStatic
+/static                            StaticR               Static appStatic
 
-/favicon.ico                        FaviconR              GET
-/robots.txt                         RobotsR               GET
+/favicon.ico                       FaviconR              GET
+/robots.txt                        RobotsR               GET
 
-/                                   HomeR                 GET
+/                                  HomeR                 GET
+ 
+/login                             LoginR                GET POST
+/logout                            LogoutR               POST
 
-/login                              LoginR                GET POST
-/logout                             LogoutR               POST
-
-/usuario                            UsuarioR              GET 
-/usuario/cadastrar				    CadastrarUsuarioR     GET POST
-/usuario/perfil/#UsuarioId          PerfilUsuarioR        GET
-/usuario/listar					    ListarUsuarioR	      GET
-/usuario/buscar/#UsuarioId		    BuscarUsuarioR	      GET
-/usuario/editar/#UsuarioId	    	EditarUsuarioR	      PUT
-/usuario/excluir/#UsuarioId	    	ExcluirUsuarioR	      POST
+/usuario                           UsuarioR              GET 
+/usuario/cadastrar				   CadastrarUsuarioR     GET POST
+/usuario/perfil/#UsuarioId         PerfilUsuarioR        GET
+/usuario/listar					   ListarUsuarioR	     GET
+/usuario/buscar/#UsuarioId		   BuscarUsuarioR	     GET
+/usuario/editar/#UsuarioId	       EditarUsuarioR	     PUT
+/usuario/excluir/#UsuarioId	       ExcluirUsuarioR	     POST
 
 
 /cliente                            ClienteR              GET
@@ -36,23 +36,16 @@
 /produto                            ProdutoR              GET
 /produto/cadastrar                  CadastrarProdutoR     GET POST
 /produto/listar                     ListarProdutoR        GET
-/produto/#ProdutoId/buscar          BuscarProdutoR        GET
-/produto/#ProdutoId/editar          EditarProdutoR        PUT
-/produto/#ProdutoId/apagar          ApagarProdutoR        POST
-/produto/#ProdutoId/perfil          PerfilProdutoR        GET POST
+/produto/buscar/#ProdutoId          BuscarProdutoR        GET
+/produto/editar/#ProdutoId          EditarProdutoR        PUT
+/produto/apagar/#ProdutoId          ApagarProdutoR        POST
+/produto/perfil/#ProdutoId          PerfilProdutoR        GET POST
 
-/pedido                             PedidoR               GET 
-/pedido/cadastrar                   CadastrarPedidoR      GET POST
-/pedido/listar                      ListarPedidoR         GET
-/pedido/buscar/#PedidoId            BuscarPedidoR         GET
-/pedido/editar/#PedidoId            EditarPedidoR         PUT
-/pedido/excluir/#PedidoId           ExcluirPedidoR        POST
+/categoria                          CategoriaR            GET
+/categoria/cadastrar                CadastrarCategoriaR   GET POST
+/categoria/listar                   ListarCategoriaR      GET
+/categoria/perfil/#CategoriaId      PerfilCategoriaR      GET
+/categoria/excluir/#CategoriaId     ExcluirCategoriaR     POST
 
-/categoria                          CategoriaR           GET
-/categoria/cadastrar                CadastrarCategoriaR  GET POST
-/categoria/listar                   ListarCategoriaR     GET
-/categoria/perfil/#CategoriaId      PerfilCategoriaR        GET
-/categoria/excluir/#CategoriaId     ExcluirCategoriaR    POST
-
-/default                            DefaultR             GET
+/default                            DefaultR              GET
 
