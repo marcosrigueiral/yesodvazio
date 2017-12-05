@@ -72,7 +72,7 @@ getHomeR = do
                                                 Cadastro de Categorias
                                         <li>
                                             <a href=@{ListarCategoriaR}>
-                                                Listagem de Categorias 
+                                                Listagem de Categorias
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         Fornecedores

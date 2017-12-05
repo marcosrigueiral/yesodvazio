@@ -86,15 +86,6 @@ Formapagamento json
     descricao Text 
     deriving Show
 
-Pedido json
-    cliid          ClienteId
-    endid          EnderecoId
-    proid          ProdutoId     
-    formapagid     FormapagamentoId
-    dataPedido     Day
-    quant          Int   -- item novo
-    deriving Show
-
 Detalhespedido json
     prodid        ProdutoId
     quantidade    Int

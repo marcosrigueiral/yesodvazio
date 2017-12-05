@@ -387,10 +387,6 @@ getListarProdutoR = do
                                                 Excluir Produto
                                                 <span class="glyphicon glyphicon-remove" aria-hidden="true">  
                                         
-                                        <form action=@{EditarProdutoR pid} method=post>
-                                            <button type="submit" vale="" class="btn btn-danger btn-excluir">
-                                                Editar Produto
-                                                <span class="glyphicon glyphicon-remove" aria-hidden="true">  
                         
                         
         |]
@@ -400,11 +396,11 @@ getBuscarProdutoR :: ProdutoId -> Handler Html
 getBuscarProdutoR = error "undefined"
 
 putEditarProdutoR :: ProdutoId -> Handler Html
-putEditarProdutoR produtoId = do
-     _ <- runDB $ get404 produtoId
-     novoProduto <- requireJsonBody :: Handler Produto
-     runDB $ replace produtoId novoProduto
-     sendStatusJSON noContent204 (object ["resp" .= ("UPDATED " ++ show (fromSqlKey produtoId))])
+putEditarProdutoR produtoId = error "undefined" -- do
+    --  _ <- runDB $ get404 produtoId
+    --  novoProduto <- requireJsonBody :: Handler Produto
+    --  runDB $ replace produtoId novoProduto
+    --  sendStatusJSON noContent204 (object ["resp" .= ("UPDATED " ++ show (fromSqlKey produtoId))])
 
 postApagarProdutoR :: ProdutoId -> Handler Html
 postApagarProdutoR pid = do 

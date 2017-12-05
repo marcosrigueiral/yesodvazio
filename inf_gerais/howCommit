@@ -7,33 +7,32 @@
     git remote add origin "https://github.com/marcosrigueiral/yesodvazio"
     git push -u origin master
 
--- para commitar no GitHub (desso)
+-- para commitar no GitHub (desso) -------------------------------------------------------------------------------
 
-    git config user.name "Anderson Morais"
-    git config user.email dessomorais@hotmail.com
-*   git add src/Handler/Entrada.hs                                       (por exemplo)
-    git commit -m "Comentar o commit de forma bem compreensível"
-    git push origin master
---  fornecer login e senha do GitHub (login: dessoGitHub)
+1º  git config user.name "Anderson Morais"
+2º  git config user.email dessomorais@hotmail.com
+3º *git add       insira o arquivo desejado.hs                                 (por exemplo)
+4º  git commit -m "Comentar o commit de forma bem compreensível" "Preparando Formulário de Cadastro de Pedidos"
+5º  git push origin master        -- fornecer login e senha do GitHub (login: dessoGitHub)
     
-*   caminho completo, por exemplo:
-    git add /home/ubuntu/workspace/GAM/src/Handler/Home.hs
+   *em tudo, por exemplo:             git add .
+   *caminho parcial, por exemplo:     git add src/Handler/Home.hs
+   *caminho completo, por exemplo:    git add /home/ubuntu/workspace/GAM/src/Handler/Home.hs
 
-*   em tudo, por exemplo:
-    git add .
 
--- para commitar no GitHub (Marcos)
+-- para commitar no GitHub (Marcos) ------------------------------------------------------------------------------
+
     git config user.name "Marcos Rigueiral"
     git config user.email marcos.rigueiral@hotmail.com
 *   git add .
     git commit -m "Comentar o commit de forma bem compreensível"
-    git push origin master
---  fornecer login e senha do GitHub (login: marcosrigueiral)
+    git push origin master        --  fornecer login e senha do GitHub (login: marcosrigueiral)
 
--- para commitar no GitHub (Gabs)
+
+-- para commitar no GitHub (Gabs) --------------------------------------------------------------------------------
+
     git config user.name "Gabriel Fonseca"
     git config user.email gabrielfonseca.coutinho@outlook.com
 *   git add .
     git commit -m "Comentar o commit de forma bem compreensível"
-    git push origin master
---  fornecer login e senha do GitHub (login: supersonicgabs)
+    git push origin master       --  fornecer login e senha do GitHub (login: supersonicgabs)

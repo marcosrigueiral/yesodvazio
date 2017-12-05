@@ -45,7 +45,7 @@ ehAdmin = do
     case sessao of
         Nothing -> return AuthenticationRequired
         (Just "admin") -> return Authorized
-        (Just _ ) -> return $ Unauthorized "Você não tem permissão!!!"
+        (Just _ ) -> return $ Unauthorized "Você não tem permissão."
     
 ehUsuario :: Handler AuthResult
 ehUsuario = do

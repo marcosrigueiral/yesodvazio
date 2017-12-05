@@ -218,7 +218,7 @@ getPerfilFuncionarioR funcionarioid = do
     funcionario <- runDB $ get404 funcionarioid
     defaultLayout $ do 
         [whamlet|
-            <h1> ]
+            <h1> 
                 Nome: #{funcionarioNome funcionario}
             <h2>
                 CPF: #{funcionarioCpf funcionario} 
@@ -226,6 +226,7 @@ getPerfilFuncionarioR funcionarioid = do
                 E-mail: #{funcionarioEmail funcionario}
             <a href=@{HomeR}> Voltar
         |]
+
 
 getListarFuncionarioR :: Handler Html
 getListarFuncionarioR = do 
