@@ -91,7 +91,6 @@ getLoginR = do
         |]
         [whamlet|
             $maybe mensa <- msg 
-                <h1> Usuário Inválido!!!
             <div class="thumbnail login-area">   
                 <div class="caption">   
                     <div class="center">   
@@ -100,6 +99,10 @@ getLoginR = do
                         ^{widget}
                         <br>
                         <input type="submit" value="Entrar" class="btn btn-success btn-login">  
+                        $maybe mensa <- msg 
+                            <div class="alert alert-danger" role="alert"> 
+                                <strong>                        
+                                    Usuário Inválido!!!
         |]
                 
 -- autentica os dados recebidos pelo form 

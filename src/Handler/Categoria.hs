@@ -150,6 +150,18 @@ getCadastrarCategoriaR = do
                                             <a href=@{ListarClienteR}>
                                                 Listagem de Clientes  
                                 
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Carrinho de Compras&nbsp;
+                                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarPedidoR}>
+                                                Cadastro de Pedidos
+                                        <li>
+                                            <a href=@{ListarPedidoR}>
+                                                Listagem de Pedidos  
                                 <li>
                                     <form action=@{LogoutR} method=post>
                                         <button type="submit" value="" class="btn btn-danger btn-sair">
@@ -283,6 +295,19 @@ getListarCategoriaR = do
                                         <li>
                                             <a href=@{ListarClienteR}>
                                                 Listagem de Clientes  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Carrinho de Compras&nbsp;
+                                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarPedidoR}>
+                                                Cadastro de Pedidos
+                                        <li>
+                                            <a href=@{ListarPedidoR}>
+                                                Listagem de Pedidos  
                                 
                                 <li>
                                     <form action=@{LogoutR} method=post>

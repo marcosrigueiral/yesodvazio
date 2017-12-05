@@ -37,6 +37,8 @@ instance Yesod App where
     isAuthorized CadastrarFuncionarioR _ = ehAdmin
     isAuthorized CadastrarCategoriaR _ = ehAdmin
     isAuthorized CadastrarFornecedorR _ = ehAdmin
+    isAuthorized CadastrarPedidoR _ = ehUsuario
+    isAuthorized ListarPedidoR _ = ehUsuario
     isAuthorized _ _ = ehUsuario
 
 ehAdmin :: Handler AuthResult

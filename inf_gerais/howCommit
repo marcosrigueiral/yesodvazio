@@ -12,7 +12,7 @@
 1º  git config user.name "Anderson Morais"
 2º  git config user.email dessomorais@hotmail.com
 3º *git add       insira o arquivo desejado.hs                                 (por exemplo)
-4º  git commit -m "Comentar o commit de forma bem compreensível" "Preparando Formulário de Cadastro de Pedidos"
+4º  git commit -m "Inclusão Carrinho de Compras nos formulários" "Comentar o commit de forma bem compreensível" "Preparando Formulário de Cadastro de Pedidos"
 5º  git push origin master        -- fornecer login e senha do GitHub (login: dessoGitHub)
     
    *em tudo, por exemplo:             git add .

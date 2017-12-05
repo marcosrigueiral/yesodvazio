@@ -197,6 +197,19 @@ getCadastrarPedidoR = do
                                         <li>
                                             <a href=@{ListarClienteR}>
                                                 Listagem de Clientes  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Carrinho de Compras&nbsp;
+                                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarPedidoR}>
+                                                Cadastro de Pedidos
+                                        <li>
+                                            <a href=@{ListarPedidoR}>
+                                                Listagem de Pedidos  
                                 
                                 <li>
                                     <form action=@{LogoutR} method=post>
@@ -207,9 +220,9 @@ getCadastrarPedidoR = do
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-download-alt" aria-hidden="true">
-                        Cadastro de Funcionários        
+                        Cadastro de Pedidos        
                     <div class="panel-body">             
-                        <form action=@{CadastrarFuncionarioR} method=post>
+                        <form action=@{CadastrarPedidoR} method=post>
                             ^{widget}
                             <div class="btn-area">                            
                                 <button type="submit" value="" class="btn btn-success btn-enviar">
@@ -266,6 +279,9 @@ putEditarPedidoR = error "undefined"
 getListarPedidoR :: Handler Html
 getListarPedidoR = do 
     pedidos <- runDB $ selectList [] [Asc PedidoId]
+    pedidoscli <- runDB $ mapM (get404 . pedidoCliid . entityVal) pedidos 
+    pedidosprod <- runDB $ mapM (get404 . pedidoProid . entityVal) pedidos 
+    let lista = zip3 pedidos pedidoscli pedidosprod
     defaultLayout $ do 
         addStylesheet $ (StaticR css_bootstrap_css)
         --addStylesheet $ (StaticR css_temas_css)
@@ -360,6 +376,19 @@ getListarPedidoR = do
                                         <li>
                                             <a href=@{ListarClienteR}>
                                                 Listagem de Clientes  
+                                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Carrinho de Compras&nbsp;
+                                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                                        <span class="caret">
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href=@{CadastrarPedidoR}>
+                                                Cadastro de Pedidos
+                                        <li>
+                                            <a href=@{ListarPedidoR}>
+                                                Listagem de Pedidos  
                                 
                                 <li>
                                     <form action=@{LogoutR} method=post>
@@ -373,7 +402,7 @@ getListarPedidoR = do
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-th-list" aria-hidden="true">
-                        Listagem de Produtos
+                        Listagem de Pedidos
                     <table class="table">
                         <thead>
                             <tr>
@@ -385,13 +414,13 @@ getListarPedidoR = do
                                     Quantidade
                                 <th>
                         <tbody>
-                            $forall (Entity pedid pedido) <- pedidos
+                            $forall ((Entity pedid pedido), cliente, produto) <- lista
                                 <tr>
                                     <td> 
                                         
-                                        #{fromSqlKey $ pedidoCliid pedido}
+                                        #{clienteNome cliente}
                                     <td>
-                                        #{fromSqlKey $ pedidoProid pedido}
+                                        #{produtoNome produto}
                                     <td>
                                         #{pedidoQuant pedido}
                                     <td>

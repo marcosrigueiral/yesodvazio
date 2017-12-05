@@ -45,7 +45,7 @@ import Handler.Fornecedor
 import Handler.Cliente
 import Handler.Produto
 import Handler.Categoria
--- import Handler.Pedido
+import Handler.Pedido
 import Handler.Funcionario
 -- import Handler.Carrinho
 

@@ -102,3 +102,13 @@ Statusdetalhespedido json
 --    cliid ClienteId
 --    proid ProdutoId
 --    deriving Show
+
+    
+Pedido json
+    cliid          ClienteId
+    proid          ProdutoId     
+    formapagid     FormapagamentoId
+    dataPedido     Day
+    quant          Int 
+    deriving Show
+    
