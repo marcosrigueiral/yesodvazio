@@ -1,0 +1,8 @@
+-- /pedido                             PedidoR               GET 
+-- /pedido/cadastrar                   CadastrarPedidoR      GET POST
+-- /pedido/listar                      ListarPedidoR         GET
+-- /pedido/buscar/#PedidoId            BuscarPedidoR         GET
+-- /pedido/editar/#PedidoId            EditarPedidoR         PUT
+-- /pedido/excluir/#PedidoId           ExcluirPedidoR        POST
+
+

@@ -1,0 +1,18 @@
+Pedido json
+    cliid          ClienteId
+    endid          EnderecoId
+    formapagid     FormapagamentoId
+    dataPedido     Day
+    deriving Show
+
+Detalhespedido json
+    prodid        ProdutoId
+    quantidade    Int
+    precoUnitario Double
+    desconto      Double
+    statid        StatusdetalhespedidoId
+    deriving Show
+
+Statusdetalhespedido json
+    descricaostatusDetalhespedido Text  
+    deriving Show

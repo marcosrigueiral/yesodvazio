@@ -4,7 +4,16 @@ Usuario json
     email     Text
     senha     Text
 --  usuid     TipousuarioId
-    UniqueCpf cpf
+    UniqueUsuarioCpf cpf
+    deriving Show
+    
+Funcionario json
+    nome      Text
+    cpf       Text     
+    email     Text
+    senha     Text
+--  usuid     TipousuarioId
+    UniqueFuncionarioCpf cpf
     deriving Show
 
 Tipousuario json
@@ -48,7 +57,7 @@ Telefone json
 
 Fornecedor json
     cnpj              Text
---    ie                Text
+--  ie                Text
     nomeEmpresa       Text
     nome              Text  
     email             Text  
@@ -95,3 +104,8 @@ Detalhespedido json
 Statusdetalhespedido json
     descricaostatusDetalhespedido Text  
     deriving Show
+
+-- Carrinho json
+--    cliid ClienteId
+--    proid ProdutoId
+--    deriving Show

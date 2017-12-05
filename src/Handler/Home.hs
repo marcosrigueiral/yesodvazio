@@ -4,10 +4,13 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
+
 module Handler.Home where
 
 import Import
 import Database.Persist.Postgresql
+
+-- <link href="config/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 getHomeR :: Handler Html
 getHomeR = do
@@ -88,10 +91,10 @@ getHomeR = do
                                         <span class="caret">
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href=@{CadastrarUsuarioR}>
+                                            <a href=@{CadastrarFuncionarioR}>
                                                 Cadastro de Funcionários
                                         <li>
-                                            <a href=@{ListarUsuarioR}>
+                                            <a href=@{ListarFuncionarioR}>
                                                 Listagem de Funcionários  
                                                 
                                 <li class="dropdown">

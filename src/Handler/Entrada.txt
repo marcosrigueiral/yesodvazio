@@ -169,3 +169,4 @@ postCadastrarEntradaR = do
             setMessage $ [shamlet| Falha no Cadastro |]
             redirect CadastrarEntradaR
 
+

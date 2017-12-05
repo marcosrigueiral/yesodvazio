@@ -29,15 +29,15 @@ formLogin = renderBootstrap $ (,)
 --     <$> areq emailField (bootstrapFieldSettings config "Email" Nothing (Just "Person name") Nothing Nothing) Nothing
 --     <*> areq passwordField (bootstrapFieldSettings config "Senha" Nothing (Just "Person name") Nothing Nothing) Nothing
 
-autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Usuario))
-autenticar email senha = runDB $ selectFirst [UsuarioEmail ==. email
-                                             ,UsuarioSenha ==. senha] []
+autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Funcionario))
+autenticar email senha = runDB $ selectFirst [FuncionarioEmail ==. email
+                                             ,FuncionarioSenha ==. senha] []
                                              
                                             
 -- funcao de autentificaçao de funcionario
 -- autenticarFunc :: Text -> Text -> HandlerT App IO (Maybe (Entity Funcionario))
--- autenticarFunc email senha = runDB $ selectFirst [UsuarioEmailf ==. email
---                                              ,UsuarioSenhaf ==. senha] []
+-- autenticarFunc email senha = runDB $ selectFirst [FuncionarioEmailf ==. email
+--                                              ,FuncionarioSenhaf ==. senha] []
 
 -- getLoginR :: Handler Html
 -- getLoginR = do 
@@ -91,7 +91,7 @@ getLoginR = do
         |]
         [whamlet|
             $maybe mensa <- msg 
-                <h1> Usuário Inválido !!!
+                <h1> Usuário Inválido!!!
             <div class="thumbnail login-area">   
                 <div class="caption">   
                     <div class="center">   
@@ -111,13 +111,13 @@ postLoginR = do
             setSession "_ID" "admin"
             redirect HomeR
         FormSuccess (email,senha) -> do 
-            usuario <- autenticar email senha 
-            case usuario of 
+            funcionario <- autenticar email senha 
+            case funcionario of 
                 Nothing -> do 
-                    setMessage $ [shamlet| Usuário ou senha inválido !!! |]
+                    setMessage $ [shamlet| Usuário ou senha inválido!!! |]
                     redirect LoginR 
-                Just (Entity usuarioId usuario) -> do 
-                    setSession "_ID" (usuarioNome usuario)
+                Just (Entity funcionarioId funcionario) -> do 
+                    setSession "_ID" (funcionarioNome funcionario)
                     redirect HomeR
         _ -> redirect HomeR
     

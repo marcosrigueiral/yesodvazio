@@ -6,7 +6,6 @@
 {-# LANGUAGE ViewPatterns #-}
 
 module Foundation where
-
 import Import.NoFoundation
 import Database.Persist.Sql (ConnectionPool, runSqlPool)
 import Yesod.Core.Types     (Logger)
@@ -25,7 +24,6 @@ mkYesodData "App" $(parseRoutesFile "config/routes")
 
 type Form a = Html -> MForm Handler (FormResult a, Widget)
 -- type Form a = FormInput Handler a StaticR             
-
 
 instance Yesod App where
     makeLogger = return . appLogger
@@ -55,7 +53,6 @@ ehUsuario = do
         Nothing -> return AuthenticationRequired
     -- (Just "admin") -> return $ Unauthorized "ADMIN N FAZ COISA NORMAL" 
         (Just _) -> return Authorized
-
 
 instance YesodPersist App where
     type YesodPersistBackend App = SqlBackend

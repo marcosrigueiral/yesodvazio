@@ -7,10 +7,11 @@
     git remote add origin "https://github.com/marcosrigueiral/yesodvazio"
     git push -u origin master
 
--- para commitar no GitHub (Anderson)
-    git config user.name "Anderson Morais" 
+-- para commitar no GitHub (desso)
+
+    git config user.name "Anderson Morais"
     git config user.email dessomorais@hotmail.com
-*   git add <path desejado>
+*   git add src/Handler/Entrada.hs                                       (por exemplo)
     git commit -m "Comentar o commit de forma bem compreensível"
     git push origin master
 --  fornecer login e senha do GitHub (login: dessoGitHub)

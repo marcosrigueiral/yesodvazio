@@ -16,6 +16,13 @@
 /usuario/editar/#UsuarioId	       EditarUsuarioR	     PUT
 /usuario/excluir/#UsuarioId	       ExcluirUsuarioR	     POST
 
+/funcionario                            FuncionarioR              GET 
+/funcionario/cadastrar				    CadastrarFuncionarioR     GET POST
+/funcionario/perfil/#FuncionarioId      PerfilFuncionarioR        GET
+/funcionario/listar					    ListarFuncionarioR	     GET
+/funcionario/buscar/#FuncionarioId		BuscarFuncionarioR	     GET
+/funcionario/editar/#FuncionarioId	    EditarFuncionarioR	     PUT
+/funcionario/excluir/#FuncionarioId	    ExcluirFuncionarioR	     POST
 
 /cliente                            ClienteR              GET
 /cliente/cadastrar                  CadastrarClienteR     GET POST
@@ -48,4 +55,3 @@
 /categoria/excluir/#CategoriaId     ExcluirCategoriaR     POST
 
 /default                            DefaultR              GET
-
