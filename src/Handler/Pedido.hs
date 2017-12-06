@@ -439,5 +439,3 @@ postExcluirPedidoR pedidoid = do
     runDB $ delete pedidoid
     redirect ListarPedidoR
     
-
-s

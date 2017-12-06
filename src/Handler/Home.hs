@@ -158,7 +158,6 @@ getHomeR = do
                                     <li> <a href=@{LoginR}> Login
                                     
                         <div class="imgfundo">
-                            <img src=@{StaticR img_img_fundo_jpg} class="logo-menu" />
                             
                             
                         
