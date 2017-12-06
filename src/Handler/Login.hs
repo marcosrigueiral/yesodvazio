@@ -94,7 +94,7 @@ getLoginR = do
             <div class="thumbnail login-area">   
                 <div class="caption">   
                     <div class="center">   
-                        <img src="../../static/img/logo-1.png" class="logo-principal">
+                        <img src=@{StaticR img_logo_1_png} class="logo-principal" />
                     <form action=@{LoginR} method=post>
                         ^{widget}
                         <br>

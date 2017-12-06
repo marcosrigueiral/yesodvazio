@@ -23,9 +23,10 @@ getHomeR = do
         --corpo html
         -- $(whamletFile "templates/home.hamlet")
         toWidget [lucius|
-            body
+            html
             {
-                background-image:url('./../static/img/img-fundo.jpg');
+                width:100%;
+                height:100%;
                 background-size:cover;
                 background-repeat:no-repeat;
                 background-position:bottom center;
@@ -59,7 +60,7 @@ getHomeR = do
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                             <a class="navbar-brand" href=@{HomeR}>
-                                <img src="../../static/img/logo-2.png" class="logo-menu" />
+                                <img src=@{StaticR img_logo_2_png} class="logo-menu" />
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown">
@@ -151,12 +152,14 @@ getHomeR = do
                                     <span class="icon-bar">
                                     <span class="icon-bar">
                                 <a class="navbar-brand" href="#">
-                                    <img src="../../static/img/logo-2.png" class="logo-menu" />
+                                    <img src=@{StaticR img_logo_2_png} class="logo-menu" />
                             <div id="navbar" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
                                     <li> <a href=@{LoginR}> Login
                                     
                         <div class="imgfundo">
+                            <img src=@{StaticR img_img_fundo_jpg} class="logo-menu" />
+                            
                             
                         
                                                             
@@ -166,3 +169,4 @@ getHomeR = do
                     $nothing
                         <h1> _{MsgBemvindo} _{MsgVisita}            
         |]
+        

@@ -107,7 +107,7 @@ getCadastrarFuncionarioR = do
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                             <a class="navbar-brand" href=@{HomeR}>
-                                <img src="../../static/img/logo-2.png" class="logo-menu" />
+                                <img src=@{StaticR img_logo_2_png} class="logo-menu" />
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown">
@@ -291,7 +291,7 @@ getListarFuncionarioR = do
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                             <a class="navbar-brand" href=@{HomeR}>
-                                <img src="../../static/img/logo-2.png" class="logo-menu" />
+                                <img src=@{StaticR img_logo_2_png} class="logo-menu" />
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown">
